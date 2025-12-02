@@ -445,4 +445,147 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 @media (max-width: 768px) {
     .lightbox-close { top: 10px; right: 20px; font-size: 30px; }
     .lightbox-prev, .lightbox-next { padding: 10px; font-size: 24px; }
+}/* =========================================
+   [추가] Trip 페이지 고급 디자인 (업그레이드)
+   ========================================= */
+
+/* 카드 그리드 레이아웃 (기존 card-list 활용하되, trip-list 클래스로 구체화) */
+.trip-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 카드 너비 넓게 */
+    gap: 40px;
+    padding: 0 40px 120px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* 여행지 카드 */
+.trip-card {
+    position: relative;
+    height: 450px; /* 세로로 긴 형태 */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.trip-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+}
+
+/* 배경 이미지 */
+.trip-bg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* 필터 제거: 원본 컬러 사진 사용 */
+}
+.trip-card:hover .trip-bg {
+    transform: scale(1.1); /* 호버 시 확대 */
+}
+
+/* 텍스트 컨텐츠 (그라데이션 오버레이 포함) */
+.trip-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 40px 30px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    color: white;
+    transition: all 0.4s ease;
+}
+
+/* 뱃지 (NEW) */
+.trip-badge {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #d66d4f; /* 포인트 컬러 */
+    background: rgba(255,255,255,0.9);
+    padding: 6px 12px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    opacity: 0; transform: translateY(20px); /* 초기 숨김 */
+    transition: all 0.4s ease 0.1s;
+}
+.trip-card:hover .trip-badge { opacity: 1; transform: translateY(0); }
+
+/* 제목 */
+.trip-content h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 15px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+.trip-card:hover h2 { transform: translateY(0); }
+
+/* 설명글 */
+.trip-content p {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 25px;
+    opacity: 0; transform: translateY(20px); /* 초기 숨김 */
+    transition: all 0.4s ease 0.2s;
+    max-height: 0; /* 공간 차지 안 하게 */
+}
+.trip-card:hover p {
+    opacity: 1; transform: translateY(0);
+    max-height: 100px; /* 호버 시 나타남 */
+}
+
+/* 버튼 */
+.trip-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.6);
+    padding: 10px 25px;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    opacity: 0; transform: translateY(20px); /* 초기 숨김 */
+    transition: all 0.4s ease 0.3s;
+}
+.trip-card:hover .trip-btn { opacity: 1; transform: translateY(0); }
+.trip-btn:hover {
+    background-color: white;
+    color: #333;
+    border-color: white;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .trip-list { grid-template-columns: 1fr; padding: 0 20px 80px; }
+    .trip-card { height: 350px; }
+    .trip-content p { opacity: 1; max-height: 100px; transform: translateY(0); display: block; margin-bottom: 15px; font-size: 14px; } /* 모바일은 항상 보이게 */
+    .trip-badge, .trip-btn { opacity: 1; transform: translateY(0); }
+}
+/* --- [수정] 폰트 전체 '윤초우산'으로 강제 통일 --- */
+body, h1, h2, h3, h4, h5, h6, p, a, span, button, input, 
+.nav-brand, .menu-title, .hero-content h1, .trip-info h2, .address-text {
+    font-family: 'YoonChoWooSan', sans-serif !important;
+    letter-spacing: 1px; /* 윤초우산 폰트는 자간이 좀 있어야 예쁨 */
+}
+
+/* 여행지 카드 제목 스타일 미세 조정 (폰트에 맞게) */
+.trip-info h2 {
+    font-weight: normal; /* 윤초우산은 너무 굵게 하면 안 예쁨 */
+    font-size: 34px; /* 폰트가 작아 보이는 경향이 있어서 키움 */
+    margin-bottom: 15px;
 }
