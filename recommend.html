@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHOI'S</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/CHOI'S.png" type="image/x-icon">
+</head>
+<body class="sub-page">
+
+    <header class="navbar">
+        <div class="menu-btn"><span></span><span></span><span></span></div>
+        <a href="index.html" class="nav-brand">CHOI'S</a>
+        <div class="nav-right"><a href="index.html" class="nav-link">HOME</a></div>
+    </header>
+
+    <div class="sidebar">
+        <div class="close-btn">×</div>
+        <ul class="sidebar-menu">
+            <li class="menu-title">CHOI'S</li>
+            <li><a href="index.html">HOME</a></li>
+            <li class="dropdown-item">
+                <a href="#" class="dropdown-toggle">CAFE LIST <span class="arrow">▼</span></a>
+                <ul class="submenu">
+                    <li><a href="recommend.html" style="color:#000000;"> - 전체 리스트 보기</a></li>
+                    <li><a href="cafe1-detail.html"> - 코스모스에이피티</a></li>
+                    <li><a href="cafe2-detail.html"> - 포도시커피</a></li>
+                    <li><a href="cafe3-detail.html"> - 디드커피</a></li>
+                    <li><a href="cafe4-detail.html"> - 팀버앤타임</a></li>
+                    <li><a href="cafe5-detail.html"> - 바이아커피스토어</a></li>
+                    <li><a href="cafe6-detail.html"> - 소프</a></li>
+                    <li><a href="cafe7-detail.html"> - 현해탄</a></li>
+                    <li><a href="cafe8-detail.html"> - 로스터리 펠릿</a></li>
+                    <li><a href="cafe9-detail.html"> - 시화 커피 하우스</a></li>
+                </ul>
+            </li>
+            <li><a href="trip.html">JEONJU TRIP</a></li>
+            <li><a href="map.html">MAP & LOCATION</a></li>
+            <li class="dropdown-item">
+                <a href="#" class="dropdown-toggle">INSTAGRAM <span class="arrow">▼</span></a>
+                <ul class="submenu">
+                    <li><a href="https://www.instagram.com/cosmosapt/" target="_blank"> - 코스모스에이피티</a></li>
+                    <li><a href="https://www.instagram.com/podosi.coffee/" target="_blank"> - 포도시커피</a></li>
+                    <li><a href="https://www.instagram.com/didcoffee_/" target="_blank"> - 디드커피</a></li>
+                    <li><a href="https://www.instagram.com/timberandtimecoffee/" target="_blank"> - 팀버앤타임</a></li>
+                    <li><a href="https://www.instagram.com/viacoffeestore/" target="_blank"> - 바이아커피스토어</a></li>
+                    <li><a href="https://www.instagram.com/sofjeonju/" target="_blank"> - 소프</a></li>
+                    <li><a href="https://www.instagram.com/hhtan_coffee/" target="_blank"> - 현해탄</a></li>
+                    <li><a href="https://www.instagram.com/p_ellet_/" target="_blank"> - 로스터리 펠릿</a></li>
+                    <li><a href="https://www.instagram.com/sihwacoffeehaus/" target="_blank"> - 시화 커피 하우스</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="overlay"></div>
+
+
+    <header class="page-title-minimal">
+        <div class="title-content">
+            <h1>BEST 9</h1>
+            <h4>A collection of my favorite cafes in Jeonju.</h4>
+        </div>
+
+        <div class="search-wrapper-minimal">
+            <input type="text" id="searchInput" placeholder="카페 이름을 검색해보세요">
+        </div>
+
+        <div class="filter-container-minimal">
+            <button class="filter-btn active" data-filter="all">ALL</button>
+            <button class="filter-btn" data-filter="mood">MOOD / VIEW</button>
+            <button class="filter-btn" data-filter="coffee">COFFEE</button>
+            <button class="filter-btn" data-filter="dessert">DESSERT</button>
+            <button class="filter-btn special-btn" data-filter="liked">♥ LIKED</button>
+        </div>
+    </header>
+
+
+    <main class="card-list">
+
+        <div class="cafe-card" id="card-cosmos" data-category="mood coffee dessert">
+            <div class="heart-btn">♥</div>
+            <div class="card-header-with-icon">
+                <img src="images/cafe1.jpg" alt="아이콘" class="profile-icon">
+                <h2>코스모스에이피티</h2>
+            </div>
+            <p>느좋 사장님과 느좋 메뉴들의 조화가 아름다운 곳.</p>
+            <a href="cafe1-detail.html" class="card-link">자세히 보기</a>
+        </div>
+
+        <div class="cafe-card" id="card-podosi" data-category="mood coffee dessert">
+            <div class="heart-btn">♥</div>
+            <div class="card-header-with-icon">
+                <img src="images/cafe2.jpg" alt="아이콘" class="profile-icon">
+                <h2>포도시커피</h2>
+            </div>
+            <p>커피에 진심인 사장님과 그에 맞는 완벽한 메뉴들.</p>
+            <a href="cafe2-detail.html" class="card-link">자세히 보기</a>
+        </div>
+
+        <div class="cafe-card" id="card-did" data-category="coffee">
+            <div class="heart-btn">♥</div>
+            <div class="card-header-with-icon">
+                <img src="images/cafe3.jpg" alt="아이콘" class="profile-icon">
+                <h2>디드커피</h2>
+            </div>
+            <p>아침 일찍 맛있는 커피를 마시고 싶다. 당장 여기로.</p>
+            <a href="cafe3-detail.html" class="card-link">자세히 보기</a>
+        </div>
+        
+        <div class="cafe-card" id="card-timber" data-category="mood dessert">
+            <div class="heart-btn">♥</div>
+            <div class="card-header-with-icon">
+                <img src="images/cafe4.jpg" alt="아이콘" class="profile-icon">
+                <h2>팀버앤타임</h2>
+            </div>
+            <p>사장님이 잘생겼고 공간도 아늑하고 디저트가 진짜 맛있어요.</p>
+            <a href="cafe4-detail.html" class="card-link">자세히 보기</a>
+        </div>
+
+        <div class="cafe-card" id="card-bio" data-category="mood coffee">
+            <div class="heart-btn">♥</div>
+            <div class="card-header-with-icon">
+                <img src="images/cafe5.jpg" alt="아이콘" class="profile-icon">
+                <h2>바이아커피스토어</h2>
+            </div>
+            <p>서울에서 느낄 법한 바이브를 가지고 있고, 직접 로스팅도 하시고, 커피 또한 너무 맛있어요.</p>
+            <a href="cafe5-detail.html" class="card-link">자세히 보기</a>
+        </div>
+
+        <div class="cafe-card" id="card-sope" data-category="mood dessert">
+            <div class="heart-btn">♥</div>
+            <div class="card-header-with-icon">
+                <img src="images/cafe6.jpg" alt="아이콘" class="profile-icon">
+                <h2>소프</h2>
+            </div>
+            <p>아기자기한 귀여움들이 가득한 곳. 수요일에 가시면 멋있는 분이 커피 내려주십니다.</p>
+            <a href="cafe6-detail.html" class="card-link">자세히 보기</a>
+        </div>
+
+        <div class="cafe-card" id="card-hyeonhaetan" data-category="mood dessert">
+            <div class="heart-btn">♥</div>
+            <div class="card-header-with-icon">
+                <img src="images/cafe7.jpg" alt="아이콘" class="profile-icon">
+                <h2>현해탄</h2>
+            </div>
+            <p>커피 한 잔 마시며 쉬어갈 수 있는 공간. 우드톤의 인테리어가 매력적이에요.</p>
+            <a href="cafe7-detail.html" class="card-link">자세히 보기</a>
+        </div>
+
+        <div class="cafe-card" id="card-pellet" data-category="coffee dessert">
+            <div class="heart-btn">♥</div>
+            <div class="card-header-with-icon">
+                <img src="images/cafe8.jpg" alt="아이콘" class="profile-icon">
+                <h2>로스터리 펠릿</h2>
+            </div>
+            <p>송천동에 위치한 개성 넘치는 로스터리 카페. 산도가 진짜 미쳤음..</p>
+            <a href="cafe8-detail.html" class="card-link">자세히 보기</a>
+        </div>
+
+        <div class="cafe-card" id="card-sihwa" data-category="mood coffee dessert">
+            <div class="heart-btn">♥</div>
+            <div class="card-header-with-icon">
+                <img src="images/cafe9.jpg" alt="아이콘" class="profile-icon">
+                <h2>시화 커피 하우스</h2>
+            </div>
+            <p>아늑한 내부 공간과 책 읽기 좋은 분위기.</p>
+            <a href="cafe9-detail.html" class="card-link">자세히 보기</a>
+        </div>
+        
+    </main>
+
+    <div class="fab-container" id="randomBtn">
+        <span class="fab-text">오늘 어디 가지?</span>
+    </div>
+
+    <div id="randomModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h3>오늘의 추천 카페는?</h3>
+            <div class="random-result">두구두구...</div>
+            <button class="btn-go-detail" style="display:none;">바로 가기</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Jeonju Cafe Project. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

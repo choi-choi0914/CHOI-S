@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHOI'S</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/CHOI'S.png" type="image/x-icon">
+</head>
+<body class="home-page">
+
+    <div id="loader">
+        <div class="loader-content">
+            <span class="loader-text">CHOI'S</span>
+            <p>JEONJU CAFE GUIDE CHOI</p>
+        </div>
+    </div>
+
+    <div class="fab-container" id="randomBtn">
+    <span class="fab-icon">✦</span> <span class="fab-text">오늘 어디 가지?</span>
+</div>
+    
+    <div id="randomModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h3>오늘의 추천 카페는?</h3>
+            <div class="random-result">두구두구...</div>
+            <button class="btn-go-detail" style="display:none;">바로 가기</button>
+        </div>
+    </div>
+
+
+    <header class="navbar fixed-top">
+        <div class="menu-btn">
+            <span></span><span></span><span></span>
+        </div>
+        <a href="index.html" class="nav-brand">CHOI'S</a>
+        <div class="nav-right"><a href="recommend.html" class="nav-link">리스트 보기</a></div>
+    </header>
+
+    <div class="sidebar">
+        <div class="close-btn">×</div>
+        <ul class="sidebar-menu">
+            <li class="menu-title">JEONJU CAFE</li>
+            <li><a href="index.html">HOME</a></li>
+            <li class="dropdown-item">
+                <a href="#" class="dropdown-toggle">CAFE LIST <span class="arrow">▼</span></a>
+                <ul class="submenu">
+                    <li><a href="recommend.html" style="color:#000000;"> - 전체 리스트 보기</a></li>
+                    <li><a href="cafe1-detail.html"> - 코스모스에이피티</a></li>
+                    <li><a href="cafe2-detail.html"> - 포도시커피</a></li>
+                    <li><a href="cafe3-detail.html"> - 디드커피</a></li> 
+                    <li><a href="cafe4-detail.html"> - 팀버앤타임</a></li>
+                    <li><a href="cafe5-detail.html"> - 바이아커피스토어</a></li>
+                    <li><a href="cafe6-detail.html"> - 소프</a></li>
+                    <li><a href="cafe7-detail.html"> - 현해탄</a></li>
+                    <li><a href="cafe8-detail.html"> - 로스터리 펠릿</a></li>
+                    <li><a href="cafe9-detail.html"> - 시화 커피 하우스</a></li>
+                </ul>
+            </li>
+            <li><a href="trip.html">JEONJU TRIP</a></li>
+            <li><a href="map.html">MAP & LOCATION</a></li>
+            <li class="dropdown-item">
+                <a href="#" class="dropdown-toggle">INSTAGRAM <span class="arrow">▼</span></a>
+                <ul class="submenu">
+                    <li><a href="https://www.instagram.com/cosmosapt/" target="_blank"> - 코스모스에이피티</a></li>
+                    <li><a href="https://www.instagram.com/podosi.coffee/" target="_blank"> - 포도시커피</a></li>
+                    <li><a href="https://www.instagram.com/didcoffee_/" target="_blank"> - 디드커피</a></li>
+                    <li><a href="https://www.instagram.com/timberandtimecoffee/" target="_blank"> - 팀버앤타임</a></li>
+                    <li><a href="https://www.instagram.com/viacoffeestore/" target="_blank"> - 바이아커피스토어</a></li>
+                    <li><a href="https://www.instagram.com/sofjeonju/" target="_blank"> - 소프</a></li>
+                    <li><a href="https://www.instagram.com/hhtan_coffee/" target="_blank"> - 현해탄</a></li>
+                    <li><a href="https://www.instagram.com/p_ellet_/" target="_blank"> - 로스터리 펠릿</a></li>
+                    <li><a href="https://www.instagram.com/sihwacoffeehaus/" target="_blank"> - 시화 커피 하우스</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="overlay"></div>
+
+
+<div class="scroll-container">
+
+        <section class="full-section section-1">
+            <div class="main-intro">
+                <h1>
+                    CHOI'S<br>
+                    <span>Edit</span>
+                </h1>
+                <p>Curated by Choi</p>
+                
+                <div class="scroll-down">SCROLL DOWN</div>
+            </div>
+        </section>
+
+        <section class="full-section section-2">
+            <div class="content-wrapper">
+                <h2>ESSENTIAL LIST</h2>
+                
+                <div class="table-container">
+                    <table class="cafe-table">
+                        <thead>
+                            <tr><th>CAFE</th><th>LOCATION</th><th>OPEN</th><th>NOTE</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>코스모스에이피티</td><td>전동</td><td>11:00 - 19:00</td><td>월 정기휴무</td></tr>
+                            <tr><td>포도시커피</td><td>다가동</td><td>12:00 - 20:00</td><td>수 정기휴무</td></tr>
+                            <tr><td>디드 객사점</td><td>고사동</td><td>08:00 - 18:00</td><td>매달 시즌이 있음</td></tr>
+                            <tr><td>디드 꽃동산점</td><td>중앙동</td><td>07:00 - 16:00</td><td>객사점과 동일</td></tr>
+                            <tr><td>팀버앤타임</td><td>풍남동</td><td>12:00 - 22:00</td><td>화 정기휴무</td></tr>
+                            <tr><td>바이아커피스토어</td><td>경원동</td><td>08:00 - 16:00</td><td>월 정기휴무</td></tr>
+                            <tr><td>소프</td><td>중앙동</td><td>12:00 - 20:00</td><td>수요일 특별 바리스타</td></tr>
+                            <tr><td>현해탄</td><td>다가동</td><td>11:00 - 20:00</td><td>수,일 - 18:00</td></tr>
+                            <tr><td>로스터리 펠릿</td><td>송천동</td><td>10:00 - 18:00</td><td>일,월 휴무</td></tr>
+                            <tr><td>시화 커피 하우스</td><td>효자동</td><td>11:00 - 20:00</td><td>토,일 - 18:00</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="full-section section-3">
+            <div class="content-wrapper">
+                <a href="recommend.html" class="btn-go-list">VIEW ALL LIST</a>
+            </div>
+            
+            <footer class="footer-inside">
+                <p>&copy; 2025 JEONJU CAFE PROJECT. ALL RIGHTS RESERVED.</p>
+            </footer>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
