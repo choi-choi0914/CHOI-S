@@ -753,3 +753,30 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
 @media (max-width: 768px) {
     .custom-cursor { display: none; }
 }
+/* 제작자 링크 스타일 */
+.creator-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #bbb; /* 은은한 회색 */
+    text-decoration: none;
+    font-size: 12px;
+    transition: 0.3s;
+    border-bottom: 1px solid transparent;
+}
+.creator-link:hover {
+    color: #455A64; /* 마우스 올리면  */
+    border-bottom: 1px solid #455A64;
+}
+/* 사이드바 개발자 메뉴 */
+.dev-menu {
+    margin-top: 40px !important; /* 위쪽 메뉴와 거리 두기 */
+    border-top: 1px dashed #ddd; /* 점선으로 구분 */
+    padding-top: 20px;
+}
+.dev-menu a {
+    font-size: 14px !important;
+    color: #999 !important; /* 연한 색으로 */
+}
+.dev-menu a:hover {
+    color: #333 !important; /* 마우스 올리면 진하게 */
+}
