@@ -780,3 +780,21 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
 .dev-menu a:hover {
     color: #333 !important; /* 마우스 올리면 진하게 */
 }
+/* [수정] index.html 푸터 (흰색 박스 제거 & 배경과 통일) */
+.home-page .section-3 {
+    background-color: transparent !important; /* 배경 투명하게 */
+}
+
+.home-page .footer-inside {
+    position: relative; /* 위치 조정 */
+    bottom: 0;
+    padding: 20px;
+    color: #888; /* 글씨 색상: 연한 회색 (배경이 흰색이라면 #888, 어두우면 #ccc) */
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* 만약 'VIEW ALL LIST' 버튼 주변 박스도 흰색이면 제거 */
+.home-page .section-3 .content-wrapper {
+    background-color: transparent !important;
+}
