@@ -105,15 +105,62 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
     background-color: #fff;
 }
 
+/* =========================================================================
+   [수정] 섹션 1: 배경 이미지 자동 슬라이드 (10장, 3초씩)
+   ========================================================================= */
 .section-1 {
-    background-image: url('images/main_bg1.jpg'); 
-    background-size: cover; background-position: center;
-    background-attachment: fixed; position: relative; color: white; text-align: center;
+    position: relative;
+    color: white;
+    text-align: center;
+    background-color: #000;
+    overflow: hidden;
 }
-.section-1::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.6); z-index: 1;
+
+.slide-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* 기본 투명 */
+    /* 총 시간: 10장 x 3초 = 30s */
+    animation: slideShow 30s infinite; 
+    z-index: 0;
 }
+
+/* --- 슬라이드별 이미지 설정 (10장) --- */
+/* 이미지 파일명 main_bg1.jpg ~ main_bg10.jpg 준비 필요 */
+
+.slide-bg:nth-child(1) { background-image: url('images/main_bg1.jpg'); animation-delay: 0s; }
+.slide-bg:nth-child(2) { background-image: url('images/main_bg2.jpg'); animation-delay: 3s; }
+.slide-bg:nth-child(3) { background-image: url('images/main_bg3.jpg'); animation-delay: 6s; }
+.slide-bg:nth-child(4) { background-image: url('images/main_bg4.jpg'); animation-delay: 9s; }
+.slide-bg:nth-child(5) { background-image: url('images/main_bg5.jpg'); animation-delay: 12s; }
+.slide-bg:nth-child(6) { background-image: url('images/main_bg6.jpg'); animation-delay: 15s; }
+.slide-bg:nth-child(7) { background-image: url('images/main_bg7.jpg'); animation-delay: 18s; }
+.slide-bg:nth-child(8) { background-image: url('images/main_bg8.jpg'); animation-delay: 21s; }
+.slide-bg:nth-child(9) { background-image: url('images/main_bg9.JPG'); animation-delay: 24s; }
+.slide-bg:nth-child(10){ background-image: url('images/main_bg10.jpg'); animation-delay: 27s; }
+
+/* 어두운 필터 */
+.dark-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.4); /* 농도 조절 가능 */
+    z-index: 1;
+}
+
+/* --- 애니메이션 키프레임 계산 (총 30초 기준) --- */
+/* 3초는 전체 30초의 10%입니다.
+   약 10% 구간 동안 보여지고 사라져야 자연스럽게 연결됩니다.
+*/
+@keyframes slideShow {
+    0% { opacity: 0; transform: scale(1); }
+    3% { opacity: 1; } /* 1초 정도 페이드 인 */
+    10% { opacity: 1; transform: scale(1.05); } /* 3초 시점까지 보임 (확대 효과) */
+    13% { opacity: 0; } /* 다음 사진이랑 겹치면서 자연스럽게 사라짐 */
+    100% { opacity: 0; }
+}
+
+/* 기존 내용 스타일 유지 */
 .main-intro { position: relative; z-index: 2; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .main-intro h1 {
     font-size: 60px; margin-bottom: 25px; letter-spacing: 3px; line-height: 1.2;
@@ -795,4 +842,52 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
 /* 만약 'VIEW ALL LIST' 버튼 주변 박스도 흰색이면 제거 */
 .home-page .section-3 .content-wrapper {
     background-color: transparent !important;
+}
+/* =========================================================================
+   [수정] 피드백(방명록) - 엉성한 손그림(Doodle) 스타일
+   ========================================================================= */
+.feedback-container {
+    max-width: 800px;
+    margin: 50px auto 100px;
+    padding: 0; 
+    background-color: #fff;
+    
+    /* ★ 핵심: 삐뚤빼뚤한 테두리 만들기 ★ */
+    /* 일부러 모서리 둥글기를 제각각 다르게 줘서 찌그러진 느낌을 냅니다 */
+    border: 3px solid #000; /* 선을 굵고 진하게 */
+    border-radius: 2% 98% 1% 99% / 99% 2% 98% 1%; 
+    
+    /* ★ 핵심: 딱딱한 그림자 (번짐 없음) ★ */
+    box-shadow: 10px 10px 0px 0px #000; 
+    
+    overflow: hidden; /* 내부 Cbox가 삐져나가지 않게 */
+    transform: rotate(-1deg); /* 박스를 살짝 기울여서 더 '킹받는' 느낌 추가 */
+    transition: transform 0.3s;
+}
+
+/* 마우스 올리면 살짝 움직이는 인터랙션 */
+.feedback-container:hover {
+    transform: rotate(0deg) scale(1.01); /* 똑바로 서면서 살짝 커짐 */
+    box-shadow: 15px 15px 0px 0px #000; /* 그림자 더 길어짐 */
+}
+
+/* Cbox 아이프레임 */
+.feedback-container iframe {
+    width: 100% !important;
+    height: 600px !important;
+    border: none !important;
+    display: block;
+}
+
+/* 모바일에서는 기울기 제거 (화면 좁아서 깨질 수 있음) */
+@media (max-width: 768px) {
+    .feedback-container {
+        width: 90%;
+        transform: none; /* 회전 제거 */
+        border-radius: 5px 20px 5px 20px; /* 약간만 엉성하게 */
+        box-shadow: 5px 5px 0px 0px #000;
+    }
+    .feedback-container:hover {
+        transform: none;
+    }
 }
