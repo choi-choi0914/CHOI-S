@@ -985,3 +985,30 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
     /* 라이트박스 버튼 크기 키움 (터치 쉽게) */
     .lightbox-prev, .lightbox-next { padding: 20px; font-size: 30px; }
 }
+/* =========================================================================
+   [CHOI'S Upgrade] 스크롤 리빌 애니메이션 (매거진 스타일)
+   ========================================================================= */
+
+/* 1. 처음엔 투명하게 아래로 살짝 내려가 있음 */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); /* 아주 부드러운 가속도 */
+}
+
+/* 2. 화면에 보이면 스르륵 올라오면서 선명해짐 */
+.reveal-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 3. 순차적으로 올라오는 효과 (리스트용) */
+.trip-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.trip-card.active {
+    opacity: 1;
+    transform: translateY(0);
+}

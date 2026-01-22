@@ -366,3 +366,33 @@ if (cursor) {
         });
     });
 }
+/* =========================================================================
+   [CHOI'S Upgrade] 스크롤 리빌 엔진 (이름 수정됨)
+   ========================================================================= */
+
+// 1. 감시자 설정 (변수명 변경: revealOptions)
+const revealOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+};
+
+// (변수명 변경: revealObserver)
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            revealObserver.unobserve(entry.target); // 감시 해제
+        }
+    });
+}, revealOptions);
+
+// 2. 움직이게 만들 요소들 지정
+const targetElements = document.querySelectorAll('.main-intro, h2, p, .cafe-table, .trip-card, .btn-go-list');
+
+targetElements.forEach((el) => {
+    // 이미 trip-card 클래스가 있으면 굳이 또 넣지 않음 (중복 방지)
+    if (!el.classList.contains('trip-card')) { 
+        el.classList.add('reveal-on-scroll'); 
+    }
+    revealObserver.observe(el); // 감시 시작
+});
