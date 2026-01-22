@@ -1012,3 +1012,57 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
     opacity: 1;
     transform: translateY(0);
 }
+/* =========================================================================
+   [CHOI'S Upgrade] 전체 메뉴판 디자인 (깔끔한 2단 배열)
+   ========================================================================= */
+
+/* 전체 박스 스타일 유지 */
+.menu-box {
+    border: 1px solid #333; /* 기존 테두리 유지 */
+    padding: 40px;
+    max-width: 800px; margin: 0 auto;
+    background-color: #fff;
+    text-align: left; /* 전체 메뉴는 왼쪽 정렬이 읽기 편함 */
+}
+
+.menu-title {
+    text-align: center; font-size: 24px; margin-bottom: 40px;
+    letter-spacing: 2px; border-bottom: 2px solid #333; padding-bottom: 20px;
+}
+
+/* 카테고리 제목 (COFFEE, DESSERT 등) */
+.category-title {
+    font-size: 18px; font-weight: bold; margin: 30px 0 15px;
+    color: #d66d4f; /* 포인트 컬러 (변경 가능) */
+    text-decoration: underline; text-underline-offset: 5px;
+}
+
+/* 메뉴 리스트 (2단 그리드) */
+.menu-list-grid {
+    list-style: none; padding: 0; margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 화면 반반 나눠서 2줄로 */
+    column-gap: 40px; /* 좌우 간격 */
+    row-gap: 20px;    /* 위아래 간격 */
+}
+
+/* 개별 메뉴 아이템 */
+.menu-list-grid li {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    border-bottom: 1px dashed #ddd; /* 점선으로 가볍게 구분 */
+    padding-bottom: 5px;
+}
+
+/* 메뉴 이름 & 영어 이름 */
+.menu-info { display: flex; flex-direction: column; }
+.menu-info .name { font-size: 16px; font-weight: bold; color: #333; }
+.menu-info .eng { font-size: 12px; color: #999; margin-top: 2px; }
+
+/* 가격 */
+.price { font-size: 16px; font-weight: bold; color: #333; }
+
+/* --- 모바일 반응형 (폰에서는 한 줄로) --- */
+@media (max-width: 768px) {
+    .menu-box { padding: 25px; width: 100%; border: none; border-top: 1px solid #333; border-bottom: 1px solid #333; }
+    .menu-list-grid { grid-template-columns: 1fr; /* 1줄로 변경 */ gap: 15px; }
+}
