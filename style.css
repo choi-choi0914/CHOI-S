@@ -1033,7 +1033,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
 /* 카테고리 제목 (COFFEE, DESSERT 등) */
 .category-title {
     font-size: 18px; font-weight: bold; margin: 30px 0 15px;
-    color: #d66d4f; /* 포인트 컬러 (변경 가능) */
+    color: #000000; /* 포인트 컬러 (변경 가능) */
     text-decoration: underline; text-underline-offset: 5px;
 }
 
