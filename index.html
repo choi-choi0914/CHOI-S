@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHOI'S</title>
-    <link rel="stylesheet" href="style.css">
+    <title>CHOI'S 2.0</title> <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/CHOI'S.png" type="image/x-icon">
+    
+    <style>
+        /* 로딩 중 깜빡임 방지용 인라인 스타일 */
+        body { background-color: #0d0d0d; } 
+    </style>
 </head>
 <body class="home-page">
 
@@ -15,11 +19,12 @@
             <p>JEONJU CAFE GUIDE CHOI</p>
         </div>
     </div>
+    
     <div class="custom-cursor"></div>
 
     <div class="fab-container" id="randomBtn">
-    <span class="fab-icon">✦</span> <span class="fab-text">오늘 어디 가지?</span>
-</div>
+        <span class="fab-icon">✦</span> <span class="fab-text">오늘 어디 가지?</span>
+    </div>
     
     <div id="randomModal" class="modal">
         <div class="modal-content">
@@ -29,7 +34,6 @@
             <button class="btn-go-detail" style="display:none;">바로 가기</button>
         </div>
     </div>
-
 
     <header class="navbar fixed-top">
         <div class="menu-btn">
@@ -83,38 +87,39 @@
     </div>
     <div class="overlay"></div>
 
+    <div class="scroll-container">
 
-<div class="scroll-container">
-
-        <section class="full-section section-1">
-            <div class="slide-bg"></div>
-            <div class="slide-bg"></div>
-            <div class="slide-bg"></div>
-            <div class="slide-bg"></div>
-            <div class="slide-bg"></div>
-            <div class="slide-bg"></div>
-            <div class="slide-bg"></div>
-            <div class="slide-bg"></div>
-            <div class="slide-bg"></div>
-            <div class="slide-bg"></div>
+        <section class="full-section hero-section" onclick="playSound()">
             
-            <div class="dark-overlay"></div>
-            <div class="main-intro">
-            <a href="about.html" style="text-decoration: none; color: inherit;">
-                <h1>
-                    CHOI'S<br>
-                    <span>Edit</span>
-                </h1>
-                </a>
-                <p>Curated by Choi</p>
-                
-                <div class="scroll-down">SCROLL DOWN</div>
+            <div class="noise-bg"></div>
+
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <span>CHOI'S EDIT 2.0 — CURATED BY CHOI — CAFE GUIDE — </span>
+                    <span>CHOI'S EDIT 2.0 — CURATED BY CHOI — CAFE GUIDE — </span>
+                </div>
             </div>
+
+            <div class="hero-center" style="position: relative; z-index: 2; text-align: center;">
+                <div class="gradient-orb"></div>
+                
+                <h1 class="glitch-title" data-text="CHOI'S">CHOI'S</h1>
+                <p style="color: rgba(255,255,255,0.8); letter-spacing: 2px; font-size: 14px; margin-top: 10px; mix-blend-mode: difference;">
+                    The New Wave of Coffee Culture
+                </p>
+                
+                <a href="#list-section" class="magnetic-btn">
+                    <span class="btn-text">ENTER ARCHIVE</span>
+                    <span class="btn-hover-bg"></span>
+                </a>
+            </div>
+
+            <div id="cursor-trail"></div>
         </section>
 
-        <section class="full-section section-2">
+        <section class="full-section section-2" id="list-section">
             <div class="content-wrapper">
-                <h2>ESSENTIAL LIST</h2>
+                <h2 style="color: #fff; mix-blend-mode: difference;">ESSENTIAL LIST</h2>
                 
                 <div class="table-container">
                     <table class="cafe-table">
@@ -140,22 +145,21 @@
 
         <section class="full-section section-3">
             <div class="content-wrapper">
-                <a href="recommend.html" class="btn-go-list">VIEW ALL LIST</a>
+                <a href="recommend.html" class="btn-go-list" style="color: #fff; border-color: #fff;">VIEW ALL LIST</a>
             </div>
             
             <footer class="footer">
-        <p>
-            &copy; 2025 CHOI'S Edit. All rights reserved.<br>
-            <a href="https://www.instagram.com/js__choii__/" target="_blank" class="creator-link">
-                Created by @js__choii__
-            </a>
-        </p>
-    </footer>
+                <p>
+                    &copy; 2025 CHOI'S Edit. All rights reserved.<br>
+                    <a href="https://www.instagram.com/js__choii__/" target="_blank" class="creator-link">
+                        Created by @js__choii__
+                    </a>
+                </p>
+            </footer>
         </section>
 
     </div>
     
-
     <div id="toast">링크가 복사되었습니다! 친구에게 공유해보세요.</div>
     <script src="script.js"></script>
 </body>
