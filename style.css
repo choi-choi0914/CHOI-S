@@ -1066,16 +1066,52 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
     .menu-box { padding: 25px; width: 100%; border: none; border-top: 1px solid #333; border-bottom: 1px solid #333; }
     .menu-list-grid { grid-template-columns: 1fr; /* 1줄로 변경 */ gap: 15px; }
 }
-/* style.css 맨 아래에 있어야 하는 코드 */
-.paper-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-    opacity: 0.06; 
-    pointer-events: none; 
-    z-index: 99999; 
-    mix-blend-mode: multiply;
+/* =========================================================================
+   [CHOI'S 2.0] Real Texture (수입지 질감 & 비네팅 효과)
+   ========================================================================= */
+
+/* 1. 배경: 너무 노랗지 않게, 살짝 회색빛 도는 차분한 크림색 */
+body {
+    background-color: #f0f0eb !important; 
+    color: #222;
+    /* [핵심] 비네팅 효과: 화면 테두리를 안쪽으로 어둡게 해서 종이 느낌 냄 */
+    box-shadow: inset 0 0 200px rgba(0,0,0,0.1); 
+    min-height: 100vh; /* 전체 화면 꽉 채우기 */
 }
 
-body {
-    background-color: #f9f7f2 !important; /* 종이 색상 */
+/* 2. 종이 질감 오버레이 (입자를 훨씬 강하게 키움) */
+.paper-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    
+    /* 기존보다 훨씬 거친 노이즈 패턴 사용 */
+    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    
+    /* 투명도 UP: 이제 눈에 확실히 보입니다 */
+    opacity: 0.4; 
+    
+    pointer-events: none; 
+    z-index: 99999;
+    /* 블렌딩 모드 변경: 종이 무늬가 배경이랑 더 잘 섞이게 */
+    mix-blend-mode: multiply; 
+}
+
+/* 3. 텍스트가 종이에 '박힌' 느낌 (약간의 투명도 + 번짐) */
+h1, h2, h3, h4, p, span, a, li, td {
+    color: #1a1a1a;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.05); /* 미세한 활자 느낌 */
+}
+
+/* 4. 사진들이 종이 위에 떠있는 느낌 (그림자 강화) */
+.trip-card, .menu-box, .cafe-table {
+    box-shadow: 5px 10px 30px rgba(0,0,0,0.08) !important;
+    border: 1px solid rgba(0,0,0,0.05) !important;
+    background-color: #fff; /* 사진 배경은 깨끗하게 */
+}
+
+/* (예외 처리) 메인 슬라이드와 다크 모드에서는 배경 투명하게 */
+.home-page .section-1, 
+.home-page .section-2, 
+.section-2 { 
+    background-color: transparent !important; 
+    box-shadow: none !important;
 }
