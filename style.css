@@ -106,7 +106,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 }
 
 /* =========================================================================
-   [수정] 섹션 1: 배경 이미지 자동 슬라이드 (10장, 3초씩)
+   [수정완료] 섹션 1: 배경 이미지 경로 수정 (cafe1.jpg ~ cafe9.jpg)
    ========================================================================= */
 .section-1 {
     position: relative;
@@ -127,19 +127,18 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
     z-index: 0;
 }
 
-/* --- 슬라이드별 이미지 설정 (10장) --- */
-/* 이미지 파일명 main_bg1.jpg ~ main_bg10.jpg 준비 필요 */
-
-.slide-bg:nth-child(1) { background-image: url('images/main_bg1.jpg'); animation-delay: 0s; }
-.slide-bg:nth-child(2) { background-image: url('images/main_bg2.jpg'); animation-delay: 3s; }
-.slide-bg:nth-child(3) { background-image: url('images/main_bg3.jpg'); animation-delay: 6s; }
-.slide-bg:nth-child(4) { background-image: url('images/main_bg4.jpg'); animation-delay: 9s; }
-.slide-bg:nth-child(5) { background-image: url('images/main_bg5.jpg'); animation-delay: 12s; }
-.slide-bg:nth-child(6) { background-image: url('images/main_bg6.jpg'); animation-delay: 15s; }
-.slide-bg:nth-child(7) { background-image: url('images/main_bg7.jpg'); animation-delay: 18s; }
-.slide-bg:nth-child(8) { background-image: url('images/main_bg8.jpg'); animation-delay: 21s; }
-.slide-bg:nth-child(9) { background-image: url('images/main_bg9.JPG'); animation-delay: 24s; }
-.slide-bg:nth-child(10){ background-image: url('images/main_bg10.jpg'); animation-delay: 27s; }
+/* --- [수정] 파일명을 cafeX.jpg로 변경했습니다 --- */
+.slide-bg:nth-child(1) { background-image: url('images/cafe1.jpg'); animation-delay: 0s; }
+.slide-bg:nth-child(2) { background-image: url('images/cafe2.jpg'); animation-delay: 3s; }
+.slide-bg:nth-child(3) { background-image: url('images/cafe3.jpg'); animation-delay: 6s; }
+.slide-bg:nth-child(4) { background-image: url('images/cafe4.jpg'); animation-delay: 9s; }
+.slide-bg:nth-child(5) { background-image: url('images/cafe5.jpg'); animation-delay: 12s; }
+.slide-bg:nth-child(6) { background-image: url('images/cafe6.jpg'); animation-delay: 15s; }
+.slide-bg:nth-child(7) { background-image: url('images/cafe7.jpg'); animation-delay: 18s; }
+.slide-bg:nth-child(8) { background-image: url('images/cafe8.jpg'); animation-delay: 21s; }
+.slide-bg:nth-child(9) { background-image: url('images/cafe9.jpg'); animation-delay: 24s; }
+/* 10번째는 사진이 9개뿐이라 1번 사진을 다시 씁니다 */
+.slide-bg:nth-child(10){ background-image: url('images/cafe1.jpg'); animation-delay: 27s; }
 
 /* 어두운 필터 */
 .dark-overlay {
@@ -148,15 +147,12 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
     z-index: 1;
 }
 
-/* --- 애니메이션 키프레임 계산 (총 30초 기준) --- */
-/* 3초는 전체 30초의 10%입니다.
-   약 10% 구간 동안 보여지고 사라져야 자연스럽게 연결됩니다.
-*/
+/* --- 애니메이션 키프레임 계산 --- */
 @keyframes slideShow {
     0% { opacity: 0; transform: scale(1); }
-    3% { opacity: 1; } /* 1초 정도 페이드 인 */
-    10% { opacity: 1; transform: scale(1.05); } /* 3초 시점까지 보임 (확대 효과) */
-    13% { opacity: 0; } /* 다음 사진이랑 겹치면서 자연스럽게 사라짐 */
+    3% { opacity: 1; } /* 페이드 인 */
+    10% { opacity: 1; transform: scale(1.05); } /* 확대 효과 */
+    13% { opacity: 0; } /* 페이드 아웃 */
     100% { opacity: 0; }
 }
 
@@ -188,36 +184,6 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 .content-wrapper::-webkit-scrollbar { display: none; }
 .content-wrapper h2 { font-size: 36px; margin-bottom: 15px; color: #333; letter-spacing: 1px; }
 .content-wrapper p { color: #999; margin-bottom: 40px; }
-
-.table-container {
-    width: 100%; overflow-x: auto; box-shadow: none; background-color: white;
-    border-top: 2px solid #333; border-bottom: 2px solid #333;
-}
-.cafe-table { width: 100%; border-collapse: collapse; min-width: 700px; table-layout: fixed; }
-.cafe-table th {
-    background-color: #fff; color: #333; padding: 20px;
-    font-size: 18px; border-bottom: 1px solid #333;
-}
-.cafe-table th:nth-child(1) { width: 20%; } .cafe-table th:nth-child(2) { width: 15%; }
-.cafe-table th:nth-child(3) { width: 25%; } .cafe-table th:nth-child(4) { width: 40%; }
-.cafe-table td {
-    padding: 20px 15px; border-bottom: 1px solid #eee; color: #666; font-size: 16px;
-    vertical-align: middle;
-}
-.cafe-table td:first-child { color: #333; font-size: 18px; }
-.cafe-table td:last-child { text-align: left; padding-left: 30px; color: #999; }
-.cafe-table tr:hover td { background-color: #f9f9f9; color: #333; transition: 0.2s; }
-
-.section-3 { background-color: #f9f9f9; text-align: center; }
-.btn-go-list {
-    display: inline-block; background-color: transparent; color: #333;
-    padding: 18px 50px; text-decoration: none;
-    font-size: 20px; letter-spacing: 1px;
-    transition: all 0.3s; border: 1px solid #333;
-}
-.btn-go-list:hover { background-color: #333; color: #fff; }
-.footer-inside { position: absolute; bottom: 30px; font-size: 14px; color: #999; letter-spacing: 0.5px; }
-
 
 /* =========================================================================
    3. 추천 리스트 & 서브 페이지 (공통 스타일)
@@ -1238,6 +1204,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
     
     .hero-content h1 { font-size: 2.5rem; letter-spacing: 2px; } /* 제목 크기 조절 */
 }
+
 /* [style.css 맨 아래에 추가: 메인 페이지 갤러리 디자인] */
 
 /* 헤더 디자인 */
