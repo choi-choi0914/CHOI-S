@@ -1066,3 +1066,16 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
     .menu-box { padding: 25px; width: 100%; border: none; border-top: 1px solid #333; border-bottom: 1px solid #333; }
     .menu-list-grid { grid-template-columns: 1fr; /* 1줄로 변경 */ gap: 15px; }
 }
+/* style.css 맨 아래에 있어야 하는 코드 */
+.paper-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.06; 
+    pointer-events: none; 
+    z-index: 99999; 
+    mix-blend-mode: multiply;
+}
+
+body {
+    background-color: #f9f7f2 !important; /* 종이 색상 */
+}
