@@ -1426,3 +1426,64 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
     background: #333; color: #fff; border: none;
     padding: 8px 15px; font-size: 11px;
 }
+/* =========================================================================
+   [긴급 복구 패치] 기존 코드는 건드리지 말고 이 코드를 맨 아래에 추가하세요!
+   ========================================================================= */
+
+/* 1. 메인화면 리스트가 겹치고 깨지는 문제 해결 */
+.section-2, .section-2.full-section {
+    height: auto !important;       /* 높이 제한 해제 (가장 중요) */
+    min-height: 100vh;             /* 최소한 화면 높이는 유지 */
+    display: block !important;     /* 플렉스 박스 충돌 방지 */
+    padding: 100px 0 150px 0 !important; /* 위아래 여백 확보 */
+    overflow: visible !important;  /* 잘림 방지 */
+    background-color: #fff !important;
+}
+
+/* 2. 리스트 디자인 (카드형) 예쁘게 잡기 */
+.gallery-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* 가로 3칸 강제 적용 */
+    gap: 30px !important;
+    padding: 0 40px !important;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+}
+
+/* 3. 로고/사진이 너무 크거나 잘리는 문제 해결 */
+.image-wrapper {
+    aspect-ratio: 1 / 1 !important; /* 정사각형 비율 고정 */
+    background-color: #f9f9f9 !important;
+    border-bottom: 1px solid #eee !important;
+}
+
+.image-wrapper img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important; /* [핵심] 그림이 잘리지 않고 액자 안에 쏙 들어감 */
+    padding: 20px !important;       /* 액자 안쪽 여백 */
+}
+
+/* 4. 배경 슬라이드 이미지 경로 수정 (실제 파일명 적용) */
+.slide-bg:nth-child(1) { background-image: url('images/cafe1.jpg') !important; }
+.slide-bg:nth-child(2) { background-image: url('images/cafe2.jpg') !important; }
+.slide-bg:nth-child(3) { background-image: url('images/cafe3.jpg') !important; }
+.slide-bg:nth-child(4) { background-image: url('images/cafe4.jpg') !important; }
+.slide-bg:nth-child(5) { background-image: url('images/cafe5.jpg') !important; }
+.slide-bg:nth-child(6) { background-image: url('images/cafe6.jpg') !important; }
+.slide-bg:nth-child(7) { background-image: url('images/cafe7.jpg') !important; }
+.slide-bg:nth-child(8) { background-image: url('images/cafe8.jpg') !important; }
+.slide-bg:nth-child(9) { background-image: url('images/cafe9.jpg') !important; }
+/* 10번은 1번 사진 재사용 */
+.slide-bg:nth-child(10){ background-image: url('images/cafe1.jpg') !important; }
+
+/* 5. 모바일 화면(폰)에서 깨짐 방지 */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr !important; /* 폰에서는 한 줄로 */
+        padding: 0 20px !important;
+    }
+    .section-2 {
+        padding: 60px 0 !important;
+    }
+}
