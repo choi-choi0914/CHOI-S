@@ -396,3 +396,64 @@ targetElements.forEach((el) => {
     }
     revealObserver.observe(el); // 감시 시작
 });
+/* =========================================================================
+   [CHOI'S 기능 복구] 사진첩 라이트박스 (크게 보기 & 넘기기)
+   ========================================================================= */
+
+// 1. 필요한 도구들(HTML 요소) 가져오기
+const lightbox = document.getElementById('imageLightbox');
+const lightboxImg = document.getElementById('lightboxImage');
+const closeBtn = document.querySelector('.lightbox-close');
+const prevBtn = document.querySelector('.lightbox-prev');
+const nextBtn = document.querySelector('.lightbox-next');
+
+// 2. 새로운 Masonry 사진들 모두 선택하기
+// (중요: 여기서 .masonry-grid 안의 이미지들을 잡아야 합니다!)
+const masonryImages = document.querySelectorAll('.masonry-grid .photo-item img');
+let currentImgIndex = 0; // 현재 보고 있는 사진 순서
+
+if (masonryImages.length > 0) {
+    
+    // (1) 사진 클릭하면 라이트박스 열기
+    masonryImages.forEach((img, index) => {
+        img.addEventListener('click', () => {
+            lightbox.style.display = 'flex'; // 화면 띄우기
+            lightboxImg.src = img.src;       // 클릭한 사진 보여주기
+            currentImgIndex = index;         // 순서 기억하기
+        });
+    });
+
+    // (2) 닫기 버튼 (X)
+    closeBtn.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+    });
+
+    // (3) 배경 눌러도 닫히게
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) lightbox.style.display = 'none';
+    });
+
+    // (4) 다음 사진 보기 (오른쪽 화살표)
+    const showNextImage = () => {
+        currentImgIndex = (currentImgIndex + 1) % masonryImages.length; // 끝까지 가면 다시 처음으로
+        lightboxImg.src = masonryImages[currentImgIndex].src;
+    };
+
+    // (5) 이전 사진 보기 (왼쪽 화살표)
+    const showPrevImage = () => {
+        currentImgIndex = (currentImgIndex - 1 + masonryImages.length) % masonryImages.length;
+        lightboxImg.src = masonryImages[currentImgIndex].src;
+    };
+
+    nextBtn.addEventListener('click', showNextImage);
+    prevBtn.addEventListener('click', showPrevImage);
+
+    // (6) 키보드 화살표로도 넘기기 (PC 사용자용 센스!)
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display === 'flex') {
+            if (e.key === 'ArrowRight') showNextImage();
+            if (e.key === 'ArrowLeft') showPrevImage();
+            if (e.key === 'Escape') lightbox.style.display = 'none';
+        }
+    });
+}
