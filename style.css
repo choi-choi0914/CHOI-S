@@ -1115,3 +1115,52 @@ h1, h2, h3, h4, p, span, a, li, td {
     background-color: transparent !important; 
     box-shadow: none !important;
 }
+/* =========================================================================
+   [가독성 보정] 글씨 선명하게 & 버튼 잘 보이게 만들기
+   ========================================================================= */
+
+/* 1. 전체 글씨를 '완전 검정(#000)'으로 변경하고 두께를 키움 */
+body {
+    color: #000 !important; /* 회색조 싹 빼고 완전 검정 */
+    font-weight: 500; /* 글씨 기본 두께를 살짝 올림 */
+}
+
+/* 2. 모든 제목과 중요한 텍스트는 더 두껍게 */
+h1, h2, h3, h4, strong, b, .nav-brand {
+    color: #000 !important;
+    font-weight: 900 !important; /* 제일 두껍게 */
+    text-shadow: none; /* 흐릿한 그림자 제거 (선명하게) */
+}
+
+/* 3. [오늘 어디 가지?] 버튼 살리기 (종이 위로 끄집어내기) */
+.fab-container {
+    background-color: #000 !important; /* 배경 완전 검정 */
+    border: 2px solid #fff !important; /* 흰색 테두리로 구분 */
+    z-index: 999999 !important; /* 종이 질감보다 더 위로 올림 (핵심!) */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important; /* 그림자 진하게 */
+}
+
+.fab-text, .fab-icon {
+    color: #fff !important; /* 글씨는 쨍한 흰색 */
+    font-weight: bold !important;
+    font-size: 15px !important; /* 글씨 크기 키움 */
+    text-shadow: none !important; /* 번짐 효과 제거 */
+}
+
+/* 4. [VIEW ALL LIST] 버튼도 잘 보이게 */
+.btn-go-list {
+    border: 2px solid #000 !important; /* 테두리 두껍게 */
+    color: #000 !important;
+    font-weight: 900 !important; /* 글씨 두껍게 */
+    background-color: rgba(255,255,255,0.5); /* 반투명 흰색 배경 깔아줌 */
+}
+.btn-go-list:hover {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+/* 5. 푸터(저작권) 글씨가 너무 흐림 -> 진하게 변경 */
+.footer, .footer p, .footer a {
+    color: #555 !important; /* 너무 연한 회색 말고 진한 회색 */
+    font-weight: 600;
+}
