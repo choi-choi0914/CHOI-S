@@ -366,3 +366,28 @@ if (cursor) {
         });
     });
 }
+/* [스크롤 리빌 관찰자 (Intersection Observer)] */
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // 1. 관찰자 설정 (화면에 10% 정도 보이면 작동해라)
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1 
+    };
+
+    // 2. 관찰자 생성
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // 화면에 들어왔다면?
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active'); // active 클래스 추가 (애니메이션 시작)
+                observer.unobserve(entry.target);     // 한 번 보여줬으면 감시 중단 (성능 최적화)
+            }
+        });
+    }, observerOptions);
+
+    // 3. '.reveal' 클래스가 붙은 모든 요소를 찾아서 감시 시작
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach(el => observer.observe(el));
+});

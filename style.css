@@ -1066,3 +1066,22 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
     .menu-box { padding: 25px; width: 100%; border: none; border-top: 1px solid #333; border-bottom: 1px solid #333; }
     .menu-list-grid { grid-template-columns: 1fr; /* 1줄로 변경 */ gap: 15px; }
 }
+/* [스크롤 리빌 애니메이션] */
+
+/* 1. 숨겨진 상태 (기본) */
+.reveal {
+    opacity: 0;                /* 투명하게 */
+    transform: translateY(50px); /* 아래로 50px 내려가 있음 */
+    transition: all 1s ease;   /* 1초 동안 부드럽게 변함 */
+}
+
+/* 2. 나타난 상태 (자바스크립트가 이 클래스를 붙여줄 것임) */
+.reveal.active {
+    opacity: 1;                /* 선명하게 */
+    transform: translateY(0);  /* 원래 위치로 올라옴 */
+}
+
+/* (선택사항) 딜레이 효과: 여러 개가 순차적으로 뜰 때 사용 */
+.reveal.delay-100 { transition-delay: 0.1s; }
+.reveal.delay-200 { transition-delay: 0.2s; }
+.reveal.delay-300 { transition-delay: 0.3s; }
