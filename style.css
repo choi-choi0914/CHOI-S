@@ -1,5 +1,5 @@
 /* =========================================================================
-   [CHOI'S REAL FINAL] 원래 배경이미지 복구 + 레이아웃 완벽 수정 버전
+   [CHOI'S FINAL] 슬라이드 원상복구 + 리스트 깨짐 해결 완료
    ========================================================================= */
 
 /* 0. 폰트 및 기본 설정 */
@@ -12,20 +12,16 @@
 body {
     font-family: 'YoonChoWooSan', sans-serif; margin: 0; padding: 0;
     background-color: #fff; color: #333; line-height: 1.6; letter-spacing: 0.5px;
-    overflow-x: hidden;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
 }
 h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-text, input, button {
     font-family: 'YoonChoWooSan', sans-serif;
 }
 
 /* [핵심] 스크롤 스냅 제거 (화면 건너뛰기 방지) */
-.main-wrapper {
-    width: 100%; height: auto; overflow-y: visible;
-}
+.main-wrapper { width: 100%; height: auto; overflow-y: visible; }
 
-/* =========================================================================
-   1. 네비게이션 & 사이드바 & 로딩
-   ========================================================================= */
+/* 1. 네비게이션 & 사이드바 & 로딩 */
 .navbar {
     position: fixed; top: 0; left: 0; width: 100%; padding: 25px 40px;
     display: flex; justify-content: space-between; align-items: center;
@@ -35,7 +31,6 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 .navbar.scrolled .nav-brand, .navbar.scrolled .nav-link { color: #333 !important; text-shadow: none !important; }
 .navbar.scrolled .menu-btn span { background-color: #333 !important; }
 
-/* 페이지별 헤더 색상 */
 .home-page .navbar .nav-brand, .home-page .navbar .nav-link { color: white; text-shadow: 0 0 5px rgba(0,0,0,0.5); }
 .home-page .navbar .menu-btn span { background-color: white; }
 .sub-page .navbar .nav-brand, .sub-page .navbar .nav-link { color: #333; }
@@ -46,7 +41,6 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 .menu-btn { cursor: pointer; width: 25px; height: 18px; display: flex; flex-direction: column; justify-content: space-between; }
 .menu-btn span { display: block; width: 100%; height: 2px; transition: 0.3s; }
 
-/* 로딩 & 사이드바 */
 #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #fff; z-index: 99999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease-out, visibility 0.5s; }
 .loader-content { text-align: center; color: #333; }
 .loader-text { font-size: 52px; font-weight: normal; margin-bottom: 15px; letter-spacing: 5px; }
@@ -66,21 +60,13 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 .overlay.active { opacity: 1; visibility: visible; }
 
 /* =========================================================================
-   2. 메인 페이지 (슬라이드 복구 + 레이아웃 수정)
+   2. 메인 페이지 (index.html)
    ========================================================================= */
 /* 섹션 1: 히어로 배너 */
-.section-1 {
-    position: relative; width: 100%; height: 100vh;
-    background-color: #000; color: white; overflow: hidden;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-}
-.slide-bg {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background-size: cover; background-position: center; opacity: 0; z-index: 0;
-    animation: slideShow 30s infinite;
-}
+.section-1 { position: relative; width: 100%; height: 100vh; background-color: #000; color: white; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.slide-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; z-index: 0; animation: slideShow 30s infinite; }
 
-/* [준수님 요청대로 원래 파일명(main_bg) 복구 완료!] */
+/* [준수님 요청] 원래 슬라이드 설정 복구 완료 */
 .slide-bg:nth-child(1) { background-image: url('images/main_bg1.jpg'); animation-delay: 0s; }
 .slide-bg:nth-child(2) { background-image: url('images/main_bg2.jpg'); animation-delay: 3s; }
 .slide-bg:nth-child(3) { background-image: url('images/main_bg3.jpg'); animation-delay: 6s; }
@@ -92,67 +78,31 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 .slide-bg:nth-child(9) { background-image: url('images/main_bg9.JPG'); animation-delay: 24s; }
 .slide-bg:nth-child(10){ background-image: url('images/main_bg10.jpg'); animation-delay: 27s; }
 
-@keyframes slideShow {
-    0% { opacity: 0; transform: scale(1); }
-    3% { opacity: 1; } 
-    10% { opacity: 1; transform: scale(1.05); }
-    13% { opacity: 0; }
-    100% { opacity: 0; }
-}
+@keyframes slideShow { 0% { opacity: 0; transform: scale(1); } 3% { opacity: 1; } 10% { opacity: 1; transform: scale(1.05); } 13% { opacity: 0; } 100% { opacity: 0; } }
 .dark-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); z-index: 1; }
 .main-intro { position: relative; z-index: 2; text-align: center; }
 .main-intro h1 { font-size: 60px; margin-bottom: 25px; letter-spacing: 3px; line-height: 1.2; color: #fff; }
 .main-intro p { font-size: 20px; color: #ddd; }
-.scroll-down {
-    position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);
-    font-size: 14px; color: rgba(255,255,255,0.8);
-    animation: bounce 2s infinite; z-index: 2; border: 1px solid rgba(255,255,255,0.5);
-    border-radius: 50px; padding: 10px 20px;
-}
+.scroll-down { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); font-size: 14px; color: rgba(255,255,255,0.8); animation: bounce 2s infinite; z-index: 2; border: 1px solid rgba(255,255,255,0.5); border-radius: 50px; padding: 10px 20px; }
 @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-10px); } }
 
-/* [핵심 수정] 섹션 2: 리스트 영역 (화면 잘림 해결) */
-.section-2 {
-    height: auto !important;     /* 높이 제한 해제 */
-    min-height: 100vh;
-    padding: 120px 0 150px;      /* 여백 충분히 */
-    background-color: #fff;
-    display: block !important;
-}
+/* [핵심 수정] 섹션 2: 리스트 영역 (화면 잘림 해결 & 디자인 최적화) */
+.section-2 { height: auto !important; min-height: 100vh; padding: 120px 0 150px; background-color: #fff; display: block !important; }
 .list-header { text-align: center; padding: 0 20px 80px; max-width: 800px; margin: 0 auto; }
 .list-header h2 { font-size: 42px; margin: 0; letter-spacing: 1px; color: #111; }
 .header-line { width: 1px; height: 40px; background: #111; margin: 30px auto; }
 
 /* 3단 카드 그리드 */
-.gallery-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
-    padding: 0 40px; max-width: 1000px; margin: 0 auto;
-}
-.gallery-item {
-    display: block; text-decoration: none; color: #333;
-    border: 1px solid #eee; background: #fff;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 0 40px; max-width: 1000px; margin: 0 auto; }
+.gallery-item { display: block; text-decoration: none; color: #333; border: 1px solid #eee; background: #fff; transition: transform 0.3s, box-shadow 0.3s; }
 .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #333; }
 
 /* [핵심] 리스트 이미지: 정사각형 + 잘림 방지 (contain) */
-.image-wrapper {
-    position: relative; width: 100%; aspect-ratio: 1 / 1;
-    overflow: hidden; background: #f9f9f9; border-bottom: 1px solid #eee;
-}
-.image-wrapper img {
-    width: 100%; height: 100%; 
-    object-fit: contain; /* 그림이 잘리지 않게 함 */
-    padding: 30px;       /* 여백 확보 */
-    filter: grayscale(100%); transition: filter 0.3s, transform 0.3s;
-}
+.image-wrapper { position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background: #f9f9f9; border-bottom: 1px solid #eee; }
+.image-wrapper img { width: 100%; height: 100%; object-fit: contain; padding: 30px; filter: grayscale(100%); transition: filter 0.3s, transform 0.3s; }
 .gallery-item:hover .image-wrapper img { transform: scale(1.05); filter: grayscale(0%); }
 
-.hover-info {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.2); display: flex; justify-content: center; align-items: center;
-    opacity: 0; transition: 0.3s;
-}
+.hover-info { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); display: flex; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
 .gallery-item:hover .hover-info { opacity: 1; }
 .hover-info span { background: #333; color: #fff; padding: 8px 15px; font-size: 11px; letter-spacing: 1px; }
 
@@ -162,10 +112,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 
 /* 섹션 3: 푸터 */
 .section-3 { height: auto !important; padding: 100px 0 50px; background: #f9f9f9; }
-.btn-go-list {
-    display: inline-block; padding: 18px 50px; text-decoration: none; color: #333;
-    font-size: 20px; letter-spacing: 1px; border: 1px solid #333; transition: 0.3s;
-}
+.btn-go-list { display: inline-block; padding: 18px 50px; text-decoration: none; color: #333; font-size: 20px; letter-spacing: 1px; border: 1px solid #333; transition: 0.3s; }
 .btn-go-list:hover { background: #333; color: #fff; }
 .footer { text-align: center; margin-top: 80px; font-size: 13px; color: #888; }
 .creator-link { text-decoration: none; color: #888; border-bottom: 1px solid transparent; }
@@ -176,21 +123,12 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
    ========================================================================= */
 @media (min-width: 769px) {
     body, a, button, input, .card-link, .filter-btn { cursor: none; }
-    .custom-cursor {
-        position: fixed; top: 0; left: 0; width: 20px; height: 20px; border-radius: 50%;
-        pointer-events: none; z-index: 999999; transform: translate(-50%, -50%);
-        transition: transform 0.15s ease;
-        background-color: #fff; mix-blend-mode: difference;
-    }
+    .custom-cursor { position: fixed; top: 0; left: 0; width: 20px; height: 20px; border-radius: 50%; pointer-events: none; z-index: 999999; transform: translate(-50%, -50%); transition: transform 0.15s ease; background-color: #fff; mix-blend-mode: difference; }
     .custom-cursor.hovered { transform: translate(-50%, -50%) scale(2.5); background-color: #fff; }
 }
 @media (max-width: 768px) { .custom-cursor { display: none; } }
 
-.fab-container {
-    position: fixed; bottom: 40px; right: 40px; z-index: 900;
-    background-color: #333; color: #fff; padding: 15px 25px; cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2); transition: 0.3s; display: flex; align-items: center; gap: 10px;
-}
+.fab-container { position: fixed; bottom: 40px; right: 40px; z-index: 900; background-color: #333; color: #fff; padding: 15px 25px; cursor: pointer; box-shadow: 0 5px 20px rgba(0,0,0,0.2); transition: 0.3s; display: flex; align-items: center; gap: 10px; }
 .fab-container:hover { background-color: #fff; color: #333; transform: translateY(-5px); }
 .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; justify-content: center; align-items: center; }
 .modal-content { background: white; padding: 50px; width: 90%; max-width: 450px; text-align: center; position: relative; }
@@ -207,11 +145,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 .trip-content { position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; padding: 40px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; flex-direction: column; justify-content: flex-end; color: white; }
 
 /* 방명록 */
-.feedback-container {
-    max-width: 800px; margin: 50px auto 100px; padding: 0; background: #fff;
-    border: 3px solid #000; border-radius: 2% 98% 1% 99% / 99% 2% 98% 1%;
-    box-shadow: 10px 10px 0px 0px #000; overflow: hidden; transform: rotate(-1deg); transition: 0.3s;
-}
+.feedback-container { max-width: 800px; margin: 50px auto 100px; padding: 0; background: #fff; border: 3px solid #000; border-radius: 2% 98% 1% 99% / 99% 2% 98% 1%; box-shadow: 10px 10px 0px 0px #000; overflow: hidden; transform: rotate(-1deg); transition: 0.3s; }
 .feedback-container:hover { transform: rotate(0deg) scale(1.01); box-shadow: 15px 15px 0px 0px #000; }
 .feedback-container iframe { width: 100% !important; height: 600px !important; border: none !important; display: block; }
 
