@@ -1112,3 +1112,129 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
     padding-top: 80px;
     box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
 }
+/* =========================================================================
+   [CHOI'S FIX] 상세 페이지 레이아웃 긴급 수정 패치
+   (이 코드를 style.css 맨 아래에 붙여넣으세요)
+   ========================================================================= */
+
+/* 1. 정보 그리드 (Hours, Off Day 등) 넓게 펼치기 */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) !important; /* 강제로 4칸으로 나눔 */
+    gap: 20px;
+    padding: 60px 0;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-item {
+    border-right: 1px solid #eee; /* 칸막이 선 추가 */
+    padding: 0 10px;
+}
+.info-item:last-child { border-right: none; } /* 마지막 칸은 선 없애기 */
+
+.info-item strong {
+    display: block;
+    font-size: 0.85rem;
+    color: #999;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.info-item p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* 2. 메뉴판 글자 깨짐 해결 & 정렬 */
+.menu-list-grid li {
+    display: flex !important;
+    justify-content: space-between !important; /* 이름-가격 양끝 정렬 */
+    align-items: flex-end !important; /* 밑줄 기준 맞추기 */
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #ddd; /* 메뉴마다 점선 */
+    flex-wrap: nowrap !important; /* 절대 줄바꿈 금지 */
+}
+
+.menu-text {
+    flex-grow: 1;
+    text-align: left;
+    margin-right: 20px; /* 가격이랑 최소 간격 */
+}
+
+.menu-text .name {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    word-break: keep-all; /* [핵심] 한글 단어 중간에 끊김 방지 ('데미타세' 해결) */
+    white-space: nowrap; /* 한 줄로 유지 */
+}
+
+.menu-text .eng {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 4px;
+    font-weight: 300;
+}
+
+.price {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap; /* 가격 줄바꿈 방지 */
+    flex-shrink: 0; /* 가격 공간은 절대 줄어들지 않음 */
+}
+
+/* 3. 갤러리 사진 짤림 & 간격 해결 */
+.detail-gallery {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* 한 줄에 3개 */
+    gap: 20px !important; /* 사진 사이 간격 넓힘 */
+    margin-top: 40px;
+}
+
+.detail-image {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* [핵심] 무조건 정사각형 비율 유지 */
+    object-fit: cover; /* 찌그러짐 없이 꽉 채우기 */
+    height: auto !important; /* 높이 자동 조절 */
+    border-radius: 0;
+}
+
+/* 4. 전체 컨텐츠 중앙 정렬 및 여백 */
+.detail-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 20px 120px; /* 위, 양옆, 아래 여백 */
+    position: relative;
+    z-index: 10;
+    background: #fff;
+}
+
+/* 5. 모바일 최적화 (화면 작을 때 깨짐 방지) */
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* 모바일은 2칸씩 2줄 */
+        gap: 30px;
+        padding: 40px 0;
+        border-bottom: none;
+    }
+    .info-item { border-right: none; background: #f9f9f9; padding: 20px; border-radius: 8px; }
+    
+    .menu-list-grid { grid-template-columns: 1fr !important; } /* 메뉴 한 줄로 */
+    
+    .detail-gallery {
+        grid-template-columns: repeat(1, 1fr) !important; /* 사진 크게 한 장씩 */
+        gap: 15px !important;
+    }
+    
+    .hero-content h1 { font-size: 2.5rem; letter-spacing: 2px; } /* 제목 크기 조절 */
+}
