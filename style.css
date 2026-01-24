@@ -1464,18 +1464,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
     padding: 20px !important;       /* 액자 안쪽 여백 */
 }
 
-/* 4. 배경 슬라이드 이미지 경로 수정 (실제 파일명 적용) */
-.slide-bg:nth-child(1) { background-image: url('images/cafe1.jpg') !important; }
-.slide-bg:nth-child(2) { background-image: url('images/cafe2.jpg') !important; }
-.slide-bg:nth-child(3) { background-image: url('images/cafe3.jpg') !important; }
-.slide-bg:nth-child(4) { background-image: url('images/cafe4.jpg') !important; }
-.slide-bg:nth-child(5) { background-image: url('images/cafe5.jpg') !important; }
-.slide-bg:nth-child(6) { background-image: url('images/cafe6.jpg') !important; }
-.slide-bg:nth-child(7) { background-image: url('images/cafe7.jpg') !important; }
-.slide-bg:nth-child(8) { background-image: url('images/cafe8.jpg') !important; }
-.slide-bg:nth-child(9) { background-image: url('images/cafe9.jpg') !important; }
-/* 10번은 1번 사진 재사용 */
-.slide-bg:nth-child(10){ background-image: url('images/cafe1.jpg') !important; }
 
 /* 5. 모바일 화면(폰)에서 깨짐 방지 */
 @media (max-width: 768px) {
