@@ -12,11 +12,14 @@
     <div class="paper-overlay"></div>
 
     <div id="loader">
-        <div class="loader-content">
-            <span class="loader-text">CHOI'S</span>
-            <p>JEONJU CAFE GUIDE CHOI</p>
-        </div>
+    <div class="loader-content">
+        <svg width="300" height="100" viewBox="0 0 300 100">
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="handwritten-text">
+                CHOI'S
+            </text>
+        </svg>
     </div>
+</div>
     <div class="custom-cursor"></div>
 
     <div class="fab-container" id="randomBtn">
@@ -159,6 +162,19 @@
     
 
     <div id="toast">링크가 복사되었습니다! 친구에게 공유해보세요.</div>
-    <script src="script.js"></script>
+    <script src="script.js">// [3단계] 로딩 화면 3초 뒤에 없애기
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loader = document.getElementById('loader');
+        if (loader) {
+            loader.classList.add('loader-hidden'); // 투명하게 만들기
+            
+            // 애니메이션 끝난 후 아예 삭제 (선택사항)
+            loader.addEventListener('transitionend', () => {
+                loader.style.display = 'none'; 
+            });
+        }
+    }, 3000); // 3000 = 3초 뒤에 사라짐 (애니메이션 시간과 맞춤)
+});</script>
 </body>
 </html>
