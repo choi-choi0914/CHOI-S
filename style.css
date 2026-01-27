@@ -143,7 +143,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 /* --- 슬라이드별 이미지 설정 (로딩 시간 5초 대기 후 시작) --- */
 
 /* 1번 사진: 0초 -> 5초 (로딩 끝날 때쯤 서서히 나타남) */
-.slide-bg:nth-child(1) { background-image: url('images/main_bg1.jpg'); animation-delay: 5s; }
+.slide-bg:nth-child(1) { background-image: url('images/main_bg1.jpg'); animation-delay: 4s; }
 
 /* 2번부터 3초 간격 유지 (5s, 8s, 11s...) */
 .slide-bg:nth-child(2) { background-image: url('images/main_bg2.jpg'); animation-delay: 8s; }
