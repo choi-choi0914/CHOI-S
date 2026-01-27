@@ -148,8 +148,14 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 .slide-bg:nth-child(6) { background-image: url('images/main_bg6.jpg'); animation-delay: 15s; }
 .slide-bg:nth-child(7) { background-image: url('images/main_bg7.jpg'); animation-delay: 18s; }
 .slide-bg:nth-child(8) { background-image: url('images/main_bg8.jpg'); animation-delay: 21s; }
-.slide-bg:nth-child(9) { background-image: url('images/main_bg9.JPG'); animation-delay: 24s; }
+.slide-bg:nth-child(9) { background-image: url('images/main_bg9.jpg'); animation-delay: 24s; }
 .slide-bg:nth-child(10){ background-image: url('images/main_bg10.jpg'); animation-delay: 27s; }
+.slide-bg:nth-child(11){ background-image: url('images/main_bg11.jpg'); animation-delay: 30s; }
+.slide-bg:nth-child(12){ background-image: url('images/main_bg12.jpg'); animation-delay: 33s; }
+.slide-bg:nth-child(13){ background-image: url('images/main_bg13.jpg'); animation-delay: 36s; }
+.slide-bg:nth-child(14){ background-image: url('images/main_bg14.jpg'); animation-delay: 39s; }
+.slide-bg:nth-child(15){ background-image: url('images/main_bg15.jpg'); animation-delay: 42s; }
+.slide-bg:nth-child(16){ background-image: url('images/main_bg16.jpg'); animation-delay: 45s; }
 
 /* 어두운 필터 */
 .dark-overlay {
