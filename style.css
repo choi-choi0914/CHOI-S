@@ -9,7 +9,7 @@ body {
     font-family: 'YoonChoWooSan', sans-serif; margin: 0; padding: 0;
     background-color: #fff; color: #333; line-height: 1.6; letter-spacing: 0.5px;
 }
-h1, h2, h3, h4, h5, h6, .menu-title, .filter-btn, .card-link, .fab-text, input, button {
+h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-text, input, button {
     font-family: 'YoonChoWooSan', sans-serif;
 }
 
@@ -36,9 +36,6 @@ h1, h2, h3, h4, h5, h6, .menu-title, .filter-btn, .card-link, .fab-text, input, 
 /* 1. 메인 페이지 (어두운 배경 위 -> 흰색) */
 .home-page .navbar .nav-brand, .home-page .navbar .nav-link { color: white; text-shadow: 0 0 5px rgba(0,0,0,0.5); }
 .home-page .navbar .menu-btn span { background-color: white; }
-/* 메인페이지에서 로고 박스 테두리도 흰색으로 */
-.home-page .navbar .nav-brand { border-color: white; }
-
 
 /* 2. 서브 페이지 (흰 배경 위 -> 검은색) - map, trip, recommend 등 */
 .sub-page .navbar .nav-brand, .sub-page .navbar .nav-link { color: #333; }
@@ -56,32 +53,7 @@ h1, h2, h3, h4, h5, h6, .menu-title, .filter-btn, .card-link, .fab-text, input, 
 .loader-text { font-size: 52px; font-weight: normal; margin-bottom: 15px; letter-spacing: 5px; }
 .loader-hidden { opacity: 0; visibility: hidden; }
 
-/* [수정된 부분] 로고(브랜드명) 디자인: 박스 스타일 적용 */
-.nav-brand {
-    font-family: 'YoonChoWooSan', sans-serif; /* 폰트 적용 */
-    font-size: 28px;
-    text-decoration: none;
-    color: #333;
-    text-transform: uppercase; /* 대문자 유지 */
-    
-    /* 박스 테두리 만들기 */
-    border: 3px solid #333;  /* 굵은 테두리 */
-    border-radius: 20px;     /* 둥근 모서리 */
-    padding: 5px 25px;       /* 안쪽 여백 (위아래 5px, 양옆 25px) */
-    
-    display: inline-block;   /* 박스 형태 유지 */
-    letter-spacing: 2px;     /* 자간 넓게 */
-    transition: all 0.3s;    /* 부드러운 효과 */
-}
-
-/* 마우스 올렸을 때 효과 (선택사항) */
-.nav-brand:hover {
-    background-color: #333;
-    color: #fff;
-    border-color: #333 !important; /* 호버시엔 테두리도 검게 */
-}
-
-
+.nav-brand { font-size: 26px; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; }
 .nav-link { font-size: 16px; text-decoration: none; letter-spacing: 1px; }
 .menu-btn {
     cursor: pointer; width: 25px; height: 18px;
@@ -397,6 +369,17 @@ h1, h2, h3, h4, h5, h6, .menu-title, .filter-btn, .card-link, .fab-text, input, 
 }
 .trip-card:hover .trip-link { opacity: 1; transform: translateY(0); }
 .trip-link:hover { background: white; color: #333; }
+
+/* =========================================================================
+   [복구] Trip 사진 경로 지정 (trip1.jpg ~ trip6.jpg)
+   ========================================================================= */
+.trip-list .trip-card:nth-child(1) .trip-bg { background-image: url('images/trip1.jpg'); }
+.trip-list .trip-card:nth-child(2) .trip-bg { background-image: url('images/trip2.jpg'); }
+.trip-list .trip-card:nth-child(3) .trip-bg { background-image: url('images/trip3.jpg'); }
+.trip-list .trip-card:nth-child(4) .trip-bg { background-image: url('images/trip4.jpg'); }
+.trip-list .trip-card:nth-child(5) .trip-bg { background-image: url('images/trip5.jpg'); }
+.trip-list .trip-card:nth-child(6) .trip-bg { background-image: url('images/trip6.jpg'); }
+
 
 /* 상세 페이지 (공통) */
 
