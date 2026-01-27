@@ -1032,7 +1032,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
     stroke-width: 1.5px;      /* 획 굵기 */
     stroke-dasharray: 400;    /* 점선 간격 (글자를 감쌀 만큼 크게) */
     stroke-dashoffset: 400;   /* 시작점 밀어두기 (안 보이게) */
-    animation: handwrite 2.5s ease-in-out forwards; /* 2.5초 동안 그려짐 */
+    animation: handwrite 4s ease-in-out forwards; /* 4초 동안 그려짐 */
 }
 
 /* 애니메이션 동작 원리 */
