@@ -260,9 +260,22 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 }
 .cafe-card:hover .profile-icon { transform: scale(1.08); }
 .cafe-card h2 { font-size: 28px; color: #333; margin: 0; letter-spacing: 1px; }
+/* [수정] 설명 글이 단어 중간에 끊기지 않도록 word-break: keep-all; 추가 */
 .cafe-card p {
-    color: #666; font-size: 16px; line-height: 1.7; margin-bottom: 40px;
-    opacity: 0; transform: translateY(30px); transition: all 0.5s ease 0.1s; max-height: 0;
+    color: #666; 
+    font-size: 16px; 
+    line-height: 1.7; 
+    margin-bottom: 40px;
+    opacity: 0; 
+    transform: translateY(30px); 
+    transition: all 0.5s ease 0.1s; 
+    max-height: 0;
+    
+    /* ★ 핵심 수정: 단어 단위로 줄바꿈 (한글 깨짐 방지) ★ */
+    word-break: keep-all; 
+    
+    /* (선택) 양옆 여백을 조금 줄여서 글씨 공간을 더 확보하려면 아래 줄 주석 해제 */
+    /* padding: 0 10px; */
 }
 .cafe-card:hover p { opacity: 1; transform: translateY(0); max-height: 150px; }
 .card-link {
