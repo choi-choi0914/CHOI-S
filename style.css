@@ -126,20 +126,20 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
     overflow: hidden;
 }
 
+/* [수정 1] 애니메이션 총 시간을 30s -> 48s로 변경 */
 .slide-bg {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     background-size: cover;
     background-position: center;
-    opacity: 0; /* 기본 투명 */
-    /* 총 시간: 10장 x 3초 = 30s */
-    animation: slideShow 30s infinite; 
+    opacity: 0; 
     z-index: 0;
+    
+    /* 16장 * 3초 = 48초 */
+    animation: slideShow 48s infinite; 
 }
 
-/* --- 슬라이드별 이미지 설정 (10장) --- */
-/* 이미지 파일명 main_bg1.jpg ~ main_bg10.jpg 준비 필요 */
-
+/* [수정 2] 16개 파일 경로 및 딜레이 설정 (준수님이 작성한 것 + 오타 수정) */
 .slide-bg:nth-child(1) { background-image: url('images/main_bg1.jpg'); animation-delay: 0s; }
 .slide-bg:nth-child(2) { background-image: url('images/main_bg2.jpg'); animation-delay: 3s; }
 .slide-bg:nth-child(3) { background-image: url('images/main_bg3.jpg'); animation-delay: 6s; }
@@ -148,7 +148,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 .slide-bg:nth-child(6) { background-image: url('images/main_bg6.jpg'); animation-delay: 15s; }
 .slide-bg:nth-child(7) { background-image: url('images/main_bg7.jpg'); animation-delay: 18s; }
 .slide-bg:nth-child(8) { background-image: url('images/main_bg8.jpg'); animation-delay: 21s; }
-.slide-bg:nth-child(9) { background-image: url('images/main_bg9.jpg'); animation-delay: 24s; }
+.slide-bg:nth-child(9) { background-image: url('images/main_bg9.jpg'); animation-delay: 24s; } /* 확장자 주의 */
 .slide-bg:nth-child(10){ background-image: url('images/main_bg10.jpg'); animation-delay: 27s; }
 .slide-bg:nth-child(11){ background-image: url('images/main_bg11.jpg'); animation-delay: 30s; }
 .slide-bg:nth-child(12){ background-image: url('images/main_bg12.jpg'); animation-delay: 33s; }
@@ -157,22 +157,13 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 .slide-bg:nth-child(15){ background-image: url('images/main_bg15.jpg'); animation-delay: 42s; }
 .slide-bg:nth-child(16){ background-image: url('images/main_bg16.jpg'); animation-delay: 45s; }
 
-/* 어두운 필터 */
-.dark-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.4); /* 농도 조절 가능 */
-    z-index: 1;
-}
-
-/* --- 애니메이션 키프레임 계산 (총 30초 기준) --- */
-/* 3초는 전체 30초의 10%입니다.
-   약 10% 구간 동안 보여지고 사라져야 자연스럽게 연결됩니다.
-*/
+/* [수정 3] 키프레임 비율 재조정 (16장에 맞춰서 타이밍 조절) */
+/* 전체 48초 중 3초는 약 6.25%입니다. */
 @keyframes slideShow {
     0% { opacity: 0; transform: scale(1); }
-    3% { opacity: 1; } /* 1초 정도 페이드 인 */
-    10% { opacity: 1; transform: scale(1.05); } /* 3초 시점까지 보임 (확대 효과) */
-    13% { opacity: 0; } /* 다음 사진이랑 겹치면서 자연스럽게 사라짐 */
+    2% { opacity: 1; }                       /* 1초 만에 나타남 */
+    6% { opacity: 1; transform: scale(1.05); } /* 3초 동안 보임 & 확대 */
+    8% { opacity: 0; }                       /* 다음 사진과 겹치며 사라짐 */
     100% { opacity: 0; }
 }
 
