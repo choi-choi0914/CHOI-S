@@ -1,3 +1,10 @@
+/* =========================================================================
+   [CHOI'S FINAL COMPLETE CSS] 
+   - 원본 1250줄 유지
+   - 로고 디자인 변경 (박스 스타일)
+   - Trip 페이지 사진 연결 복구
+   ========================================================================= */
+
 /* 0. 폰트 및 기본 설정 */
 @font-face {
     font-family: 'YoonChoWooSan';
@@ -9,7 +16,7 @@ body {
     font-family: 'YoonChoWooSan', sans-serif; margin: 0; padding: 0;
     background-color: #fff; color: #333; line-height: 1.6; letter-spacing: 0.5px;
 }
-h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-text, input, button {
+h1, h2, h3, h4, h5, h6, .menu-title, .filter-btn, .card-link, .fab-text, input, button {
     font-family: 'YoonChoWooSan', sans-serif;
 }
 
@@ -29,16 +36,16 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
     border-bottom: 1px solid #eee;
 }
 .navbar.scrolled .nav-brand, 
-.navbar.scrolled .nav-link { color: #333 !important; text-shadow: none !important; }
+.navbar.scrolled .nav-link { color: #333 !important; text-shadow: none !important; border-color: #333 !important; }
 .navbar.scrolled .menu-btn span { background-color: #333 !important; }
 
 /* [중요] 페이지별 헤더 초기 색상 설정 */
 /* 1. 메인 페이지 (어두운 배경 위 -> 흰색) */
-.home-page .navbar .nav-brand, .home-page .navbar .nav-link { color: white; text-shadow: 0 0 5px rgba(0,0,0,0.5); }
+.home-page .navbar .nav-brand, .home-page .navbar .nav-link { color: white; text-shadow: 0 0 5px rgba(0,0,0,0.5); border-color: white; }
 .home-page .navbar .menu-btn span { background-color: white; }
 
 /* 2. 서브 페이지 (흰 배경 위 -> 검은색) - map, trip, recommend 등 */
-.sub-page .navbar .nav-brand, .sub-page .navbar .nav-link { color: #333; }
+.sub-page .navbar .nav-brand, .sub-page .navbar .nav-link { color: #333; border-color: #333; }
 .sub-page .navbar .menu-btn span { background-color: #333; }
 
 
@@ -53,7 +60,32 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 .loader-text { font-size: 52px; font-weight: normal; margin-bottom: 15px; letter-spacing: 5px; }
 .loader-hidden { opacity: 0; visibility: hidden; }
 
-.nav-brand { font-size: 26px; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; }
+/* [수정됨] 로고(브랜드명) 디자인: 박스 스타일 적용 */
+.nav-brand {
+    font-family: 'YoonChoWooSan', sans-serif;
+    font-size: 28px;
+    text-decoration: none;
+    /* color는 위쪽 페이지별 설정 따름 */
+    text-transform: uppercase;
+    
+    /* 박스 테두리 만들기 */
+    border: 3px solid;       /* 색상은 상속받음 */
+    border-radius: 20px;     /* 둥근 모서리 */
+    padding: 5px 25px;       /* 안쪽 여백 */
+    
+    display: inline-block;   
+    letter-spacing: 2px;     
+    transition: all 0.3s;    
+}
+
+/* 마우스 올렸을 때 효과 */
+.nav-brand:hover {
+    background-color: #333;
+    color: #fff !important;
+    border-color: #333 !important;
+    text-shadow: none !important;
+}
+
 .nav-link { font-size: 16px; text-decoration: none; letter-spacing: 1px; }
 .menu-btn {
     cursor: pointer; width: 25px; height: 18px;
@@ -98,10 +130,24 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 /* =========================================================================
    2. 메인 페이지 (index.html)
    ========================================================================= */
-.scroll-container { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+/* [수정] 스크롤 컨테이너: 강제 넘기기 기능 제거 (자연스러운 스크롤) */
+.scroll-container {
+    height: auto;          /* 100vh -> auto로 변경 */
+    overflow-y: visible;   /* scroll -> visible로 변경 */
+    scroll-behavior: smooth;
+    /* scroll-snap-type 속성은 제거 */
+}
+
+/* [수정] 섹션 공통: 높이 제한 해제 */
 .full-section {
-    height: 100vh; width: 100%; scroll-snap-align: start; position: relative;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    width: 100%;
+    min-height: 100vh;    /* height: 100vh 대신 min-height 사용 */
+    height: auto;         /* 내용만큼 길어지게 함 */
+    position: relative;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
     background-color: #fff;
 }
 
@@ -114,6 +160,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
     text-align: center;
     background-color: #000;
     overflow: hidden;
+    height: 100vh; /* 첫 화면은 꽉 차게 */
 }
 
 .slide-bg {
@@ -149,9 +196,6 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 }
 
 /* --- 애니메이션 키프레임 계산 (총 30초 기준) --- */
-/* 3초는 전체 30초의 10%입니다.
-   약 10% 구간 동안 보여지고 사라져야 자연스럽게 연결됩니다.
-*/
 @keyframes slideShow {
     0% { opacity: 0; transform: scale(1); }
     3% { opacity: 1; } /* 1초 정도 페이드 인 */
@@ -180,10 +224,16 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 .bg-icon { display: none; }
 
-.section-2 { background-color: #fff; padding: 0; }
+/* [수정] 섹션 2: 리스트 섹션 여백 및 표시 방식 수정 */
+.section-2 { 
+    background-color: #fff; 
+    padding: 100px 0; 
+    display: block; /* Flex 해제 */
+}
 .content-wrapper {
     width: 100%; max-width: 1100px; text-align: center; padding: 40px 20px;
-    max-height: 100vh; overflow-y: auto;
+    height: auto; /* 높이 제한 해제 */
+    overflow-y: visible;
 }
 .content-wrapper::-webkit-scrollbar { display: none; }
 .content-wrapper h2 { font-size: 36px; margin-bottom: 15px; color: #333; letter-spacing: 1px; }
@@ -208,7 +258,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 .cafe-table td:last-child { text-align: left; padding-left: 30px; color: #999; }
 .cafe-table tr:hover td { background-color: #f9f9f9; color: #333; transition: 0.2s; }
 
-.section-3 { background-color: #f9f9f9; text-align: center; }
+.section-3 { background-color: #f9f9f9; text-align: center; padding: 100px 0 50px 0; display: block; }
 .btn-go-list {
     display: inline-block; background-color: transparent; color: #333;
     padding: 18px 50px; text-decoration: none;
@@ -370,9 +420,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 .trip-card:hover .trip-link { opacity: 1; transform: translateY(0); }
 .trip-link:hover { background: white; color: #333; }
 
-/* =========================================================================
-   [복구] Trip 사진 경로 지정 (trip1.jpg ~ trip6.jpg)
-   ========================================================================= */
+/* [중요] Trip 사진을 강제로 연결해주는 코드 추가 */
 .trip-list .trip-card:nth-child(1) .trip-bg { background-image: url('images/trip1.jpg'); }
 .trip-list .trip-card:nth-child(2) .trip-bg { background-image: url('images/trip2.jpg'); }
 .trip-list .trip-card:nth-child(3) .trip-bg { background-image: url('images/trip3.jpg'); }
@@ -433,6 +481,12 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
     .menu-section { padding: 30px 20px; }
     .menu-list-premium li { flex-direction: column; align-items: flex-start; gap: 5px; }
     .menu-list-premium .price { align-self: flex-end; }
+    
+    /* Trip 페이지 모바일 대응 */
+    .trip-list { grid-template-columns: 1fr; padding: 0 20px 80px; }
+    .trip-card { height: 350px; }
+    .trip-content p { opacity: 1; max-height: 100px; transform: translateY(0); display: block; margin-bottom: 15px; font-size: 14px; } /* 모바일은 항상 보이게 */
+    .trip-badge, .trip-btn { opacity: 1; transform: translateY(0); }
 }
 /* =========================================================================
    5. 라이트박스 (갤러리 확대보기)
@@ -608,13 +662,6 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
     border-color: white;
 }
 
-/* 모바일 대응 */
-@media (max-width: 768px) {
-    .trip-list { grid-template-columns: 1fr; padding: 0 20px 80px; }
-    .trip-card { height: 350px; }
-    .trip-content p { opacity: 1; max-height: 100px; transform: translateY(0); display: block; margin-bottom: 15px; font-size: 14px; } /* 모바일은 항상 보이게 */
-    .trip-badge, .trip-btn { opacity: 1; transform: translateY(0); }
-}
 /* --- [수정] 폰트 전체 '윤초우산'으로 강제 통일 --- */
 body, h1, h2, h3, h4, h5, h6, p, a, span, button, input, 
 .nav-brand, .menu-title, .hero-content h1, .trip-info h2, .address-text {
@@ -871,112 +918,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
     display: block;
 }
 
-/* =========================================================================
-   5. 모바일 반응형 디자인 (가독성 & 줄바꿈 완벽 해결)
-   ========================================================================= */
-@media (max-width: 768px) {
-    
-    /* [핵심] 모든 텍스트 단어 단위 줄바꿈 (글자 중간 잘림 방지) */
-    * {
-        word-break: keep-all; 
-        word-wrap: break-word;
-    }
-
-    /* 1. 네비게이션 & 사이드바 */
-    .navbar { padding: 15px 20px; }
-    .nav-brand { font-size: 20px; letter-spacing: 1px; } 
-    .nav-link { font-size: 13px; }
-    .sidebar { width: 85%; left: -85%; padding: 40px 25px; } /* 사이드바 좀 더 넓게 */
-    
-    /* 2. 메인 페이지 (index.html) */
-    .main-intro h1 { 
-        font-size: 36px; /* 제목 크기 적절히 조절 */
-        letter-spacing: 0; 
-        line-height: 1.3; 
-        padding: 0 10px;
-    } 
-    .main-intro p { font-size: 15px; padding: 0 20px; opacity: 0.9; }
-    
-    .content-wrapper { padding: 40px 15px; }
-    .content-wrapper h2 { font-size: 26px; }
-    
-    /* 테이블 (가로 스크롤 허용, 글자 작게) */
-    .table-container { border-top: 1px solid #333; margin-top: 20px; }
-    .cafe-table th, .cafe-table td { padding: 12px 10px; font-size: 13px; }
-    .cafe-table th { white-space: nowrap; background-color: #f9f9f9; } /* 헤더 한 줄 유지 */
-    
-    /* 3. 리스트 페이지 (recommend.html) */
-    .page-title-minimal { padding: 100px 20px 40px; }
-    .title-content h1 { 
-        font-size: 32px; 
-        line-height: 1.4; 
-    }
-    .title-content h4 { font-size: 14px; margin-bottom: 30px; line-height: 1.6; }
-    
-    .search-wrapper-minimal { width: 100%; }
-    .filter-container-minimal { gap: 8px; }
-    .filter-btn { padding: 8px 16px; font-size: 13px; } /* 버튼 터치하기 좋게 */
-
-    .card-list { 
-        grid-template-columns: 1fr; /* 1줄로 보기 */
-        padding: 0 20px 80px; 
-        gap: 40px;
-    }
-    .cafe-card { 
-        width: 100%; max-width: 100%; 
-        padding: 30px 20px;
-    }
-    /* 카드 제목과 설명 글자 크기 조정 */
-    .cafe-card h2 { font-size: 24px; }
-    .cafe-card p { font-size: 15px; }
-    
-    /* 4. 상세 페이지 (cafe-detail.html) */
-    .cafe-hero { height: 50vh; }
-    .hero-content { padding: 0 15px; }
-    .hero-content h1 { font-size: 36px; line-height: 1.2; }
-    .detail-content { padding: 0 20px 60px; margin-top: -30px; }
-    
-    /* 정보 아이콘 그리드 (2칸씩) */
-    .info-grid { 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 15px; margin: 30px 0; border-bottom: none; 
-    }
-    .info-item { 
-        border-right: none; padding: 15px; 
-        background-color: #f8f8f8; border-radius: 8px; /* 박스형으로 변경 */
-    }
-    
-    /* 메뉴판 */
-    .menu-section { padding: 25px 15px; }
-    .menu-list-premium li { flex-direction: column; align-items: flex-start; gap: 5px; }
-    .menu-list-premium .price { align-self: flex-end; font-size: 16px; margin-top: 5px; }
-    
-    /* 갤러리 */
-    .detail-gallery { grid-template-columns: repeat(1, 1fr); gap: 15px; }
-    .detail-image { height: auto; aspect-ratio: 4/3; }
-
-    /* 지도 버튼 꽉 차게 */
-    .btn-map-premium { width: 100%; box-sizing: border-box; }
-
-    /* 5. 피드백 페이지 (feedback.html) */
-    .feedback-container {
-        width: 100%; margin: 20px 0 60px; 
-        border: 2px solid #333; /* 모바일에서도 테두리 유지 */
-        border-radius: 5px; /* 둥글기 줄임 */
-        box-shadow: 5px 5px 0px 0px #000;
-        transform: none !important; /* 기울기 제거 */
-    }
-    .feedback-container iframe { height: 500px !important; }
-
-    /* 6. 유틸리티 */
-    .fab-container { bottom: 20px; right: 20px; padding: 10px 15px; }
-    .fab-text { font-size: 13px; }
-    .modal-content { width: 90%; padding: 30px 20px; }
-    #toast { width: 90%; bottom: 20px; font-size: 13px; }
-    
-    /* 라이트박스 버튼 크기 키움 (터치 쉽게) */
-    .lightbox-prev, .lightbox-next { padding: 20px; font-size: 30px; }
-}
 /* =========================================================================
    [CHOI'S Upgrade] 스크롤 리빌 애니메이션 (매거진 스타일)
    ========================================================================= */
