@@ -153,7 +153,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 .slide-bg:nth-child(6) { background-image: url('images/main_bg6.jpg'); animation-delay: 20s; }
 .slide-bg:nth-child(7) { background-image: url('images/main_bg7.jpg'); animation-delay: 23s; }
 .slide-bg:nth-child(8) { background-image: url('images/main_bg8.jpg'); animation-delay: 26s; }
-.slide-bg:nth-child(9) { background-image: url('images/main_bg9.jpg'); animation-delay: 29s; } /* 확장자 주의 */
+.slide-bg:nth-child(9) { background-image: url('images/main_bg9.JPG'); animation-delay: 29s; } /* 확장자 주의 */
 .slide-bg:nth-child(10){ background-image: url('images/main_bg10.jpg'); animation-delay: 32s; }
 .slide-bg:nth-child(11){ background-image: url('images/main_bg11.jpg'); animation-delay: 35s; }
 .slide-bg:nth-child(12){ background-image: url('images/main_bg12.jpg'); animation-delay: 38s; }
