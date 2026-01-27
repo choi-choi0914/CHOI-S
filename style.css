@@ -318,7 +318,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 #card-sope:hover { background-color: #FAFAFA; }
 #card-hyeonhaetan:hover { background-color: #F5F5F5; }
 #card-pellet:hover { background-color: #FCE4EC; }
-#card-lastweek:hover { background-color: #faf4dd; }
+#card-lastweek:hover { background-color: #FFFFE0; }
 
 .cafe-card.hide { display: none; }
 .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
@@ -1045,4 +1045,45 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button, input,
     0% { stroke-dashoffset: 400; fill: transparent; }
     80% { stroke-dashoffset: 0; fill: transparent; } /* 다 그려짐 */
     100% { stroke-dashoffset: 0; fill: #333; }       /* 색 채우기 */
+}
+/* [style.css 맨 아래에 추가] 핀터레스트 스타일 갤러리 */
+
+.detail-gallery {
+    column-count: 3;       /* 3줄로 배치 */
+    column-gap: 15px;      /* 좌우 간격 */
+    margin-top: 60px;
+    padding: 0 10px;
+    display: block !important; /* 기존 grid 속성 덮어쓰기 */
+}
+
+/* 사진을 감싸는 박스 (사진 잘림 방지) */
+.gallery-item {
+    break-inside: avoid;   /* 사진이 반으로 잘리는 것 방지 */
+    margin-bottom: 15px;   /* 위아래 간격 */
+    overflow: hidden;
+}
+
+/* 이미지 스타일 */
+.detail-image {
+    width: 100%;
+    height: auto !important; /* 비율 유지 */
+    display: block;
+    filter: grayscale(100%); /* 흑백 효과 */
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+/* 마우스 올렸을 때 */
+.detail-image:hover {
+    filter: grayscale(0%);   /* 컬러로 변환 */
+    transform: scale(1.03);  /* 살짝 확대 */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    z-index: 2;
+}
+
+/* 모바일 (화면 작을 때) */
+@media (max-width: 768px) {
+    .detail-gallery {
+        column-count: 1; /* 1줄로 변경 */
+    }
 }
