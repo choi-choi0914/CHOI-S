@@ -140,22 +140,27 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 }
 
 /* [수정 2] 16개 파일 경로 및 딜레이 설정 (준수님이 작성한 것 + 오타 수정) */
-.slide-bg:nth-child(1) { background-image: url('images/main_bg1.jpg'); animation-delay: 0s; }
-.slide-bg:nth-child(2) { background-image: url('images/main_bg2.jpg'); animation-delay: 3s; }
-.slide-bg:nth-child(3) { background-image: url('images/main_bg3.jpg'); animation-delay: 6s; }
-.slide-bg:nth-child(4) { background-image: url('images/main_bg4.jpg'); animation-delay: 9s; }
-.slide-bg:nth-child(5) { background-image: url('images/main_bg5.jpg'); animation-delay: 12s; }
-.slide-bg:nth-child(6) { background-image: url('images/main_bg6.jpg'); animation-delay: 15s; }
-.slide-bg:nth-child(7) { background-image: url('images/main_bg7.jpg'); animation-delay: 18s; }
-.slide-bg:nth-child(8) { background-image: url('images/main_bg8.jpg'); animation-delay: 21s; }
-.slide-bg:nth-child(9) { background-image: url('images/main_bg9.jpg'); animation-delay: 24s; } /* 확장자 주의 */
-.slide-bg:nth-child(10){ background-image: url('images/main_bg10.jpg'); animation-delay: 27s; }
-.slide-bg:nth-child(11){ background-image: url('images/main_bg11.jpg'); animation-delay: 30s; }
-.slide-bg:nth-child(12){ background-image: url('images/main_bg12.jpg'); animation-delay: 33s; }
-.slide-bg:nth-child(13){ background-image: url('images/main_bg13.jpg'); animation-delay: 36s; }
-.slide-bg:nth-child(14){ background-image: url('images/main_bg14.jpg'); animation-delay: 39s; }
-.slide-bg:nth-child(15){ background-image: url('images/main_bg15.jpg'); animation-delay: 42s; }
-.slide-bg:nth-child(16){ background-image: url('images/main_bg16.jpg'); animation-delay: 45s; }
+/* --- 슬라이드별 이미지 설정 (로딩 시간 5초 대기 후 시작) --- */
+
+/* 1번 사진: 0초 -> 5초 (로딩 끝날 때쯤 서서히 나타남) */
+.slide-bg:nth-child(1) { background-image: url('images/main_bg1.jpg'); animation-delay: 5s; }
+
+/* 2번부터 3초 간격 유지 (5s, 8s, 11s...) */
+.slide-bg:nth-child(2) { background-image: url('images/main_bg2.jpg'); animation-delay: 8s; }
+.slide-bg:nth-child(3) { background-image: url('images/main_bg3.jpg'); animation-delay: 11s; }
+.slide-bg:nth-child(4) { background-image: url('images/main_bg4.jpg'); animation-delay: 14s; }
+.slide-bg:nth-child(5) { background-image: url('images/main_bg5.jpg'); animation-delay: 17s; }
+.slide-bg:nth-child(6) { background-image: url('images/main_bg6.jpg'); animation-delay: 20s; }
+.slide-bg:nth-child(7) { background-image: url('images/main_bg7.jpg'); animation-delay: 23s; }
+.slide-bg:nth-child(8) { background-image: url('images/main_bg8.jpg'); animation-delay: 26s; }
+.slide-bg:nth-child(9) { background-image: url('images/main_bg9.jpg'); animation-delay: 29s; } /* 확장자 주의 */
+.slide-bg:nth-child(10){ background-image: url('images/main_bg10.jpg'); animation-delay: 32s; }
+.slide-bg:nth-child(11){ background-image: url('images/main_bg11.jpg'); animation-delay: 35s; }
+.slide-bg:nth-child(12){ background-image: url('images/main_bg12.jpg'); animation-delay: 38s; }
+.slide-bg:nth-child(13){ background-image: url('images/main_bg13.jpg'); animation-delay: 41s; }
+.slide-bg:nth-child(14){ background-image: url('images/main_bg14.jpg'); animation-delay: 44s; }
+.slide-bg:nth-child(15){ background-image: url('images/main_bg15.jpg'); animation-delay: 47s; }
+.slide-bg:nth-child(16){ background-image: url('images/main_bg16.jpg'); animation-delay: 50s; }
 
 /* [수정 3] 키프레임 비율 재조정 (16장에 맞춰서 타이밍 조절) */
 /* 전체 48초 중 3초는 약 6.25%입니다. */
