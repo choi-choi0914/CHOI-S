@@ -318,6 +318,7 @@ h1, h2, h3, h4, h5, h6, .nav-brand, .menu-title, .filter-btn, .card-link, .fab-t
 #card-sope:hover { background-color: #FAFAFA; }
 #card-hyeonhaetan:hover { background-color: #F5F5F5; }
 #card-pellet:hover { background-color: #FCE4EC; }
+#card-lastweek:hover { background-color: #fff5ce; }
 
 .cafe-card.hide { display: none; }
 .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
