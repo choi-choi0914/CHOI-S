@@ -8,10 +8,18 @@ const closeBtn = document.querySelector('.close-btn');
 const overlay = document.querySelector('.overlay');
 const scrollContainer = document.querySelector('.scroll-container'); 
 
-// 로딩 화면 제거
+// [수정됨] 로딩 화면 제거 (손글씨 애니메이션 시간 4초 고려하여 5.5초 뒤 제거)
 window.addEventListener("load", () => {
     const loader = document.querySelector("#loader");
-    if(loader) setTimeout(() => loader.classList.add("loader-hidden"), 1000);
+    if(loader) {
+        setTimeout(() => {
+            loader.classList.add("loader-hidden");
+            // 애니메이션 끝난 후 요소 삭제 (선택사항)
+            loader.addEventListener('transitionend', () => {
+                loader.style.display = 'none';
+            });
+        }, 5500); // 1000 -> 5500으로 수정 (손글씨 다 보여주기 위해)
+    }
 });
 
 // 스크롤 이벤트
@@ -58,7 +66,7 @@ if (dropdownToggles) {
 // =========================================================================
 //   2. 필터 및 검색 기능
 // =========================================================================
-// 스크롤 애니메이션
+// 스크롤 애니메이션 (Intersection Observer)
 const observerOptions = { threshold: 0.1 };
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -135,7 +143,7 @@ if (hearts) {
 
 
 // =========================================================================
-//   3. [수정됨] 무한 롤링 슬라이드 (Special Page)
+//   3. 무한 롤링 슬라이드 (Special Page)
 // =========================================================================
 if (document.querySelector('.carousel-container')) {
     const carouselSlide = document.querySelector('.carousel-slide');
@@ -198,8 +206,7 @@ if (document.querySelector('.carousel-container')) {
     // 트랜지션이 끝났을 때 순간이동 (무한 루프 효과)
     carouselSlide.addEventListener('transitionend', () => {
         // 맨 끝 복사본에 도달하면 -> 진짜 처음으로 순간이동
-        if (images[counter] && allImages[counter].classList.contains('clone')) {
-             // 계산 로직: 전체 길이에서 클론 영역 조정
+        if (allImages[counter].classList.contains('clone')) {
              if (counter >= allImages.length - size) {
                  counter = size; // 진짜 1번 이미지 위치
                  updateSlide(false);
@@ -209,21 +216,12 @@ if (document.querySelector('.carousel-container')) {
                  updateSlide(false);
              }
         }
-        // 간단한 인덱스 기반 리셋 (위 로직이 복잡할 경우 대비)
-        if (counter >= allImages.length - size) {
-            counter = size;
-            updateSlide(false);
-        }
-        if (counter <= 0) {
-            counter = allImages.length - (size * 2);
-            updateSlide(false);
-        }
     });
 }
 
 
 // =========================================================================
-//   4. [수정됨] 라이트박스 (갤러리 + 슬라이드 모두 작동)
+//   4. 라이트박스 (갤러리 + 슬라이드 모두 작동)
 // =========================================================================
 const lightboxModal = document.getElementById('imageLightbox');
 if (lightboxModal) {
@@ -234,7 +232,12 @@ if (lightboxModal) {
     
     // 상세 페이지 갤러리 + 슬라이드 이미지 모두 포함
     // .clone 제외 (슬라이드 복사본은 클릭 안 되게)
-    let galleryImages = Array.from(document.querySelectorAll('.detail-image, .carousel-slide img:not(.clone)'));
+    let galleryImages = []; 
+    
+    const updateGalleryList = () => {
+        galleryImages = Array.from(document.querySelectorAll('.detail-image, .carousel-slide img:not(.clone)'));
+    };
+    
     let currentIndex = 0;
 
     const openLightbox = (index) => {
@@ -250,16 +253,17 @@ if (lightboxModal) {
     };
 
     // 이미지 클릭 이벤트 연결
-    // (슬라이드 이미지는 동적으로 위치가 바뀌므로 부모에게 위임하거나 다시 선택)
-    // 여기서는 간단하게 전체 다시 선택해서 연결
-    document.querySelectorAll('.detail-image, .carousel-slide img').forEach(img => {
-        img.addEventListener('click', (e) => {
-            // 클릭한 이미지가 원본 목록에서 몇 번째인지 찾기
-            // src가 같은지 비교 (가장 확실한 방법)
-            const targetIndex = galleryImages.findIndex(item => item.src === e.target.src);
-            if (targetIndex !== -1) {
-                openLightbox(targetIndex);
-            }
+    // (동적으로 추가된 이미지도 처리하기 위해 이벤트 위임 방식 권장하지만, 여기선 단순 재할당)
+    window.addEventListener('load', () => {
+        updateGalleryList();
+        document.querySelectorAll('.detail-image, .carousel-slide img').forEach(img => {
+            img.addEventListener('click', (e) => {
+                // 클릭한 이미지가 원본 목록에서 몇 번째인지 찾기
+                const targetIndex = galleryImages.findIndex(item => item.src === e.target.src);
+                if (targetIndex !== -1) {
+                    openLightbox(targetIndex);
+                }
+            });
         });
     });
 
@@ -292,7 +296,7 @@ if (randomBtn) {
     const rResult = document.querySelector('.random-result');
     const rGoBtn = document.querySelector('.btn-go-detail');
     
-    // 카페 데이터
+    // [수정됨] 카페 데이터 (10번째 '라스트위크' 추가 완료)
     const cafeData = [
         { name: "코스모스에이피티", url: "cafe1-detail.html" },
         { name: "포도시커피", url: "cafe2-detail.html" },
@@ -302,7 +306,8 @@ if (randomBtn) {
         { name: "소프", url: "cafe6-detail.html" },
         { name: "현해탄", url: "cafe7-detail.html" },
         { name: "로스터리 펠릿", url: "cafe8-detail.html" },
-        { name: "시화 커피 하우스", url: "cafe9-detail.html" }
+        { name: "시화 커피 하우스", url: "cafe9-detail.html" },
+        { name: "라스트위크", url: "cafe10-detail.html" } // ★ 추가됨
     ];
 
     randomBtn.addEventListener('click', () => {
@@ -342,7 +347,7 @@ function shareLink() {
 }
 
 /* =========================================================================
-   [추가] 커스텀 마우스 커서 움직임
+   6. 커스텀 마우스 커서 움직임
    ========================================================================= */
 const cursor = document.querySelector('.custom-cursor');
 
@@ -355,7 +360,7 @@ if (cursor) {
 
     // 2. 링크/버튼 위에 올렸을 때 효과 (커짐)
     // a 태그, button 태그, .card-link 클래스 등을 모두 찾음
-    const hoverTargets = document.querySelectorAll('a, button, .card-link, .filter-btn, .fab-container, .trip-card');
+    const hoverTargets = document.querySelectorAll('a, button, .card-link, .filter-btn, .fab-container, .trip-card, .detail-image');
 
     hoverTargets.forEach(target => {
         target.addEventListener('mouseenter', () => {
@@ -366,28 +371,3 @@ if (cursor) {
         });
     });
 }
-/* [스크롤 리빌 관찰자 (Intersection Observer)] */
-document.addEventListener("DOMContentLoaded", function() {
-    
-    // 1. 관찰자 설정 (화면에 10% 정도 보이면 작동해라)
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1 
-    };
-
-    // 2. 관찰자 생성
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            // 화면에 들어왔다면?
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active'); // active 클래스 추가 (애니메이션 시작)
-                observer.unobserve(entry.target);     // 한 번 보여줬으면 감시 중단 (성능 최적화)
-            }
-        });
-    }, observerOptions);
-
-    // 3. '.reveal' 클래스가 붙은 모든 요소를 찾아서 감시 시작
-    const revealElements = document.querySelectorAll('.reveal');
-    revealElements.forEach(el => observer.observe(el));
-});
